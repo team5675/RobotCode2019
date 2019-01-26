@@ -7,17 +7,14 @@
 
 package frc.robot;
 
-import com.kauailabs.navx.frc.AHRS;
-
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.TimedRobot;
 import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.Vision;
+import frc.robot.DriverController;
 
 public class Robot extends TimedRobot {
 
-  //public static AHRS ahrs; // gyroscope
-  //public static AHRS gyro = new AHRS(SPI.Port.kMXP);
   Vision Vision = new Vision();
 
   @Override
@@ -41,8 +38,6 @@ public class Robot extends TimedRobot {
   
   @Override
   public void teleopPeriodic() {
-    // regular operator control
-    //chassis.driveCartesian();
     Vision.runFrontVision();
   }
 
