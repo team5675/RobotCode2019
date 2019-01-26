@@ -19,4 +19,8 @@ public class Drive {
 
     public static MecanumDrive chassis = new MecanumDrive(m_frontLeft, m_backLeft, m_frontRight, m_backRight);
     
+    public void move(double x, double y, double z){
+        chassis.driveCartesian(x, y, z);
+    }
+    
 }

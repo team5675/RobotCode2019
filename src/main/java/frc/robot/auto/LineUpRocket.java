@@ -7,8 +7,31 @@
 
 package frc.robot.auto;
 
+import frc.robot.subsystems.Drive;
+import frc.robot.DriverController;
+
 public class LineUpRocket {
+    int varSet = 0;
+    double left = 0;
+    double right = 0;
+
+    Drive drive = new Drive();
+    DriverController driverController = new DriverController();
+
     public void run(double centerX){
-        System.out.println(centerX);
+        if (varSet == 0){
+            varSet++;
+            left = centerX;
+        }else{
+            varSet--;
+            right = centerX;
+
+            double a = right - left;
+            double b = a/2;
+            double c = left + b;
+            double d = c - 80;
+            System.out.println(d/80);
+            drive.move(d/80 + driverController.getStrafe(), 0, 0);
+        }
     }
 }

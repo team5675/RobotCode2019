@@ -22,7 +22,7 @@ public class DriverController {
     }
 
     public double getStrafe() {
-        return xbox1.getRawAxis(1);
+        return xbox1.getRawAxis(0);
     }
 
     public double getRotation() {

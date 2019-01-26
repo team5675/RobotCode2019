@@ -13,17 +13,16 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 import frc.robot.auto.LineUpRocket;
 
 public class Vision {
-    LineUpRocket LineUpRocket = new LineUpRocket();
+    LineUpRocket lineUpRocket = new LineUpRocket();
 
     NetworkTableInstance inst = NetworkTableInstance.getDefault();
-    NetworkTable table = inst.getTable("visionReport");
+    NetworkTable table = inst.getTable("/GRIP/visionReport");
     NetworkTableEntry centerXData = table.getEntry("centerX");
 
     public void runFrontVision(){
-        System.out.println("yeet");
         double[] centerX = centerXData.getDoubleArray(new double[0]);
         for (double x : centerX){
-            LineUpRocket.run(x);
+            lineUpRocket.run(x);
         }
     }
 }
