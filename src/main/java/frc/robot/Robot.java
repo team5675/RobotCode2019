@@ -14,12 +14,10 @@ import frc.robot.subsystems.Vision;
 import frc.robot.DriverController;
 
 public class Robot extends TimedRobot {
-
-  Vision Vision = new Vision();
+  Vision vision = new Vision();
 
   @Override
   public void robotInit() {
-   
   }
 
   @Override
@@ -28,17 +26,15 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousInit() {
-    
   }
 
   @Override
   public void autonomousPeriodic() {
-    
   }
   
   @Override
   public void teleopPeriodic() {
-    Vision.runFrontVision();
+    vision.runFrontVision();
   }
 
   @Override

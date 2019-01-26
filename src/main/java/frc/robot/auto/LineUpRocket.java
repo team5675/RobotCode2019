@@ -22,16 +22,11 @@ public class LineUpRocket {
         if (varSet == 0){
             varSet++;
             left = centerX;
-        }else{
+        } else {
             varSet--;
             right = centerX;
 
-            double a = right - left;
-            double b = a/2;
-            double c = left + b;
-            double d = c - 80;
-            System.out.println(d/80);
-            drive.move(d/80 + driverController.getStrafe(), 0, 0);
+            drive.move((left + ((right - left)/2) - 80)/80 + driverController.getStrafe(), 0, 0);
         }
     }
 }
