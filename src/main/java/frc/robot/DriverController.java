@@ -14,17 +14,6 @@ public class DriverController {
     XboxController xbox1 = new XboxController(0);//main driver
     XboxController xbox2 = new XboxController(1);//aux driver
 
-    public double getForward() {
-        return -(xbox1.getRawAxis(0));
-    }
-
-    public double getStrafe() {
-        return xbox1.getRawAxis(1);
-    }
-
-    public double getRotation() {
-        return -xbox1.getRawAxis(4);
-    }
 
     public boolean getFloorVision() {
         return xbox1.getAButton();

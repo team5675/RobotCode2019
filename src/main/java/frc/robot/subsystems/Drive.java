@@ -17,6 +17,6 @@ public class Drive {
     public static Spark m_backLeft = new Spark(2);
     public static Spark m_backRight = new Spark(3);
 
-    public static MecanumDrive chassis = new MecanumDrive(m_frontLeft, m_backLeft, m_frontRight, m_backRight);
+    public static MecanumDrive drive = new MecanumDrive(m_frontLeft, m_backLeft, m_frontRight, m_backRight);
     
 }

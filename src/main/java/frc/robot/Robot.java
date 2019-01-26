@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.TimedRobot;
 import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.Vision;
+import frc.robot.DriverController;
 
 public class Robot extends TimedRobot {
 
@@ -43,7 +44,7 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     
     // regular operator control
-    //Drive.chassis.driveCartesian();
+    Drive.drive.driveCartesian(-(xbox1.getRawAxis(1)), xbox1.getRawAxis(0), -xbox1.getRawAxis(4));
     Vision.runFrontVision();
   }
 
