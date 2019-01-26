@@ -26,10 +26,6 @@ public class DriverController {
         return -xbox1.getRawAxis(4);
     }
 
-    public boolean getFloorVision() {
-        return xbox1.getAButton();
-    }
-
     public boolean getWallVision() {
         return xbox1.getBButton();
     }

@@ -26,7 +26,8 @@ public class LineUpRocket {
             varSet--;
             right = centerX;
 
-            drive.move((left + ((right - left)/2) - 80)/80 + driverController.getStrafe(), 0, 0);
+            double x = (left + ((right - left)/2) - 80)/80; //Center between vision targets
+            drive.move(x, 0, 0);
         }
     }
 }
