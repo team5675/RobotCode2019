@@ -19,7 +19,8 @@ public class Vision {
     NetworkTable table = inst.getTable("visionReport");
     NetworkTableEntry centerXData = table.getEntry("centerX");
 
-    public void getFrontVisionData(){
+    public void runFrontVision(){
+        System.out.println("yeet");
         double[] centerX = centerXData.getDoubleArray(new double[0]);
         for (double x : centerX){
             LineUpRocket.run(x);

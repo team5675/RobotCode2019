@@ -12,23 +12,23 @@ import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.TimedRobot;
 import frc.robot.subsystems.Drive;
+import frc.robot.subsystems.Vision;
 
 public class Robot extends TimedRobot {
 
-  public static AHRS ahrs; // gyroscope
-public static AHRS gyro = new AHRS(SPI.Port.kMXP);
+  //public static AHRS ahrs; // gyroscope
+  //public static AHRS gyro = new AHRS(SPI.Port.kMXP);
+  Vision Vision = new Vision();
 
   @Override
   public void robotInit() {
    
   }
 
- 
   @Override
   public void robotPeriodic() {
   }
 
-  
   @Override
   public void autonomousInit() {
     
@@ -37,19 +37,14 @@ public static AHRS gyro = new AHRS(SPI.Port.kMXP);
   @Override
   public void autonomousPeriodic() {
     
-    }
+  }
   
-
- 
   @Override
   public void teleopPeriodic() {
-    while (isOperatorControl() && isEnabled()) {
-
-      // regular operator control
-       chassis.driveCartesian();
-    }
+    // regular operator control
+    //chassis.driveCartesian();
+    Vision.runFrontVision();
   }
-
 
   @Override
   public void testPeriodic() {
