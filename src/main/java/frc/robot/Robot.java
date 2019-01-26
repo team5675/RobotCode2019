@@ -9,10 +9,12 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import frc.robot.subsystems.Vision;
+import frc.robot.subsystems.Drive;
 import frc.robot.DriverController;
 
 public class Robot extends TimedRobot {
   Vision vision = new Vision();
+  Drive drive = new Drive();
   DriverController driverController = new DriverController();
 
   @Override
@@ -33,6 +35,8 @@ public class Robot extends TimedRobot {
   
   @Override
   public void teleopPeriodic() {
+    drive.move(driverController.getStrafe(), driverController.getForward(), driverController.getRotation());
+
     if (driverController.getWallVision()){
       vision.runFrontVision();
     }
