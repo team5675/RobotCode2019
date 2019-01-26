@@ -7,15 +7,16 @@
 
 package frc.robot;
 
+import com.kauailabs.navx.frc.AHRS;
+
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.TimedRobot;
 
-import com.kauailabs.navx.frc.AHRS;
-
 public class Robot extends TimedRobot {
 
-  public static AHRS ahrs; //gyroscope
+  public static AHRS ahrs; // gyroscope
 public static AHRS gyro = new AHRS(SPI.Port.kMXP);
+
   @Override
   public void robotInit() {
    
@@ -41,6 +42,11 @@ public static AHRS gyro = new AHRS(SPI.Port.kMXP);
  
   @Override
   public void teleopPeriodic() {
+    while (isOperatorControl() && isEnabled()) {
+
+       //regular operator control
+       chassis.driveCartesian();
+    }
   }
 
 
