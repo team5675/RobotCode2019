@@ -7,8 +7,22 @@
 
 package frc.robot.subsystems;
 
-/**
- * Add your docs here.
- */
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
+import frc.robot.auto.LineUpRocket;
+
 public class Vision {
+    LineUpRocket LineUpRocket = new LineUpRocket();
+
+    NetworkTableInstance inst = NetworkTableInstance.getDefault();
+    NetworkTable table = inst.getTable("visionReport");
+    NetworkTableEntry centerXData = table.getEntry("centerX");
+
+    public void getFrontVisionData(){
+        double[] centerX = centerXData.getDoubleArray(new double[0]);
+        for (double x : centerX){
+            LineUpRocket.run(x);
+        }
+    }
 }

@@ -7,8 +7,8 @@
 
 package frc.robot.auto;
 
-/**
- * Add your docs here.
- */
 public class LineUpRocket {
+    public void run(double centerX){
+        System.out.println(centerX);
+    }
 }
