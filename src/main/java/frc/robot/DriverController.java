@@ -10,9 +10,6 @@ package frc.robot;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 
-/**
- * Add your docs here.
- */
 public class DriverController {
     XboxController xbox1 = new XboxController(0);//main driver
     XboxController xbox2 = new XboxController(1);//aux driver
@@ -72,4 +69,14 @@ public class DriverController {
     public boolean getCargo3() {
         return xbox2.getYButton();
     }
+    public boolean getHatch1() {
+        return xbox2.getRawAxis(7) == 1;
+    }
+    public boolean getHatch2() {
+        return xbox2.getRawAxis(6) == -1;
+    }
+    public boolean getHatch3() {
+        return xbox2.getRawAxis(7) == -1;
+    }
+
 }
