@@ -51,10 +51,10 @@ public class DriverController {
     public boolean getHatchRelease() {
         return (xbox2.getTriggerAxis(Hand.kLeft)) == 1; 
     }
-    public boolean getBumperIntake() {
+    public boolean getCargoIntake() {
         return xbox2.getBumper(Hand.kRight);
     }
-    public boolean getBumperRelease() {
+    public boolean getCargoRelease() {
         return (xbox2.getTriggerAxis(Hand.kRight)) == 1;
     }
     public double getElevator() {
