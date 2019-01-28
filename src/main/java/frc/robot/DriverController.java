@@ -15,7 +15,7 @@ public class DriverController {
     XboxController xbox2 = new XboxController(1); //aux driver
 
     public double getForward() {
-        return -xbox1.getRawAxis(0);
+        return -xbox1.getRawAxis(1);
     }
 
     public double getStrafe() {
