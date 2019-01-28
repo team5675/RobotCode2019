@@ -8,26 +8,18 @@
 package frc.robot.auto;
 
 import frc.robot.subsystems.Drive;
+import frc.robot.subsystems.Vision;
 import frc.robot.DriverController;
 
-public class LineUpRocket {
-    int varSet = 0;
-    double left = 0;
-    double right = 0;
+public class LineUp {
 
     Drive drive = new Drive();
     DriverController driverController = new DriverController();
+    Vision vision = new Vision();
 
-    public void run(double centerX){
-        if (varSet == 0){
-            varSet++;
-            left = centerX;
-        } else {
-            varSet--;
-            right = centerX;
-
-            double x = (left + ((right - left)/2) - 80)/80; //Center between vision targets
-            drive.move(x, 0, 0);
-        }
+    public void run(){
+        double[] report = vision.runFrontVision();
+        double x = (report[0] + ((report[1] - report[0])/2) - 80)/80; //Center between vision targets
+        drive.move(x, 0, 0);
     }
 }

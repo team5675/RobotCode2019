@@ -10,19 +10,14 @@ package frc.robot.subsystems;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
-import frc.robot.auto.LineUpRocket;
 
 public class Vision {
-    LineUpRocket lineUpRocket = new LineUpRocket();
-
     NetworkTableInstance inst = NetworkTableInstance.getDefault();
     NetworkTable table = inst.getTable("/GRIP/visionReport");
     NetworkTableEntry centerXData = table.getEntry("centerX");
 
-    public void runFrontVision(){
+    public double[] runFrontVision() {
         double[] centerX = centerXData.getDoubleArray(new double[0]);
-        for (double x : centerX){
-            lineUpRocket.run(x);
-        }
+        return centerX;
     }
 }

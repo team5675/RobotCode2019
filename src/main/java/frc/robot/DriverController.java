@@ -26,7 +26,7 @@ public class DriverController {
         return -xbox1.getRawAxis(4);
     }
 
-    public boolean getWallVision() {
+    public boolean lineUp() {
         return xbox1.getBButton();
     }
 
