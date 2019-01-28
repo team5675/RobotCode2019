@@ -25,7 +25,8 @@ public class LineUp {
             double[] areaReport = vision.runFrontVisionArea();
             double left = areaReport[0];
             double right = areaReport[1];
-            double y = (left - (left + right)/2)/((left + right)/2);
+            double meanArea = (left + right)/2; //I have been looking at this for 15 minutes and
+            double y = (left - meanArea)/meanArea; //have yet to comprehend how it will work in any way - Max
 
             drive.move(x * 2, y, 0); //i forgot what side is rotate and im to lazy to look it up
             //doing * 2 kind of like a nitrous boost
