@@ -15,9 +15,15 @@ public class Vision {
     NetworkTableInstance inst = NetworkTableInstance.getDefault();
     NetworkTable table = inst.getTable("/GRIP/visionReport");
     NetworkTableEntry centerXData = table.getEntry("centerX");
+    NetworkTableEntry areaData = table.getEntry("area");
 
-    public double[] runFrontVision() {
+    public double[] runFrontVisionCenterX() {
         double[] centerX = centerXData.getDoubleArray(new double[0]);
         return centerX;
+    }
+
+    public double[] runFrontVisionArea() {
+        double[] area = areaData.getDoubleArray(new double[0]);
+        return area;
     }
 }

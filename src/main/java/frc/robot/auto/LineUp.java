@@ -18,8 +18,19 @@ public class LineUp {
     Vision vision = new Vision();
 
     public void run(){
-        double[] report = vision.runFrontVision();
-        double x = (report[0] + ((report[1] - report[0])/2) - 80)/80; //Center between vision targets
-        drive.move(x, 0, 0);
+        double[] centerXReport = vision.runFrontVisionCenterX();
+        if (centerXReport.length < 3){
+            double x = (centerXReport[0] + ((centerXReport[1] - centerXReport[0])/2) - 80)/80; //Center between vision targets
+            
+            double[] areaReport = vision.runFrontVisionArea();
+            double left = areaReport[0];
+            double right = areaReport[1];
+            double y = (left - (left + right)/2)/((left + right)/2);
+
+            drive.move(x * 2, y, 0); //i forgot what side is rotate and im to lazy to look it up
+            //doing * 2 kind of like a nitrous boost
+        } else {
+            System.out.println("MORE THAN TWO CONTOURS!!!");
+        }
     }
 }
