@@ -7,8 +7,10 @@
 
 package frc.robot.subsystems;
 
-/**
- * Add your docs here.
- */
+import edu.wpi.first.wpilibj.Spark;
+
 public class Jeff {
+    
+    public Spark intake = new Spark(4);
+
 }
