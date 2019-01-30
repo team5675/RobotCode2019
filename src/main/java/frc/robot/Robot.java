@@ -35,10 +35,16 @@ public class Robot extends TimedRobot {
   
   @Override
   public void teleopPeriodic() {
-    drive.move(driverController.getStrafe(), driverController.getForward(), driverController.getRotation());
 
+    
     if (driverController.lineUp()){
       lineUp.run();
+    }
+
+    else{
+
+      drive.move(driverController.getStrafe(), driverController.getForward(), driverController.getRotation());
+
     }
   }
 
