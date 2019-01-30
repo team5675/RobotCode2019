@@ -48,6 +48,15 @@ public class Robot extends TimedRobot {
       drive.move(driverController.getStrafe(), driverController.getForward(), driverController.getRotation());
 
     }
+
+    //Cargo intake/outtake
+    if (driverController.getCargoIntake()) {
+      jeff.setIntakeSpeed(0.5);  //Temporary; This will need testing to decide on a speed for the intake wheels
+    } else if (driverController.getCargoRelease()) {
+      jeff.setIntakeSpeed(-0.5); //Placeholder speed
+    } else {
+      jeff.setIntakeSpeed(0);
+    }
   }
 
   @Override
