@@ -11,11 +11,13 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import frc.robot.subsystems.Drive;
 import frc.robot.DriverController;
 import frc.robot.auto.LineUp;
+import frc.robot.subsystems.Jeff;
 
 public class Robot extends TimedRobot {
   LineUp lineUp = new LineUp();
   Drive drive = new Drive();
   DriverController driverController = new DriverController();
+  Jeff jeff = new Jeff();
 
   @Override
   public void robotInit() {

@@ -7,8 +7,15 @@
 
 package frc.robot.subsystems;
 
-/**
- * Add your docs here.
- */
+import edu.wpi.first.wpilibj.Spark;
+
 public class Jeff {
+    
+    public Spark intake = new Spark(4);
+
+    public void setIntakeSpeed(double speed) {
+
+        intake.set(speed);
+    }
+
 }

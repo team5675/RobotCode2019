@@ -11,22 +11,22 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 
 public class DriverController {
-    static XboxController xbox1 = new XboxController(0); //main driver
-    static XboxController xbox2 = new XboxController(1); //aux driver
+    XboxController xbox1 = new XboxController(0); //main driver
+    XboxController xbox2 = new XboxController(1); //aux driver
 
-    public static double getForward() {
+    public double getForward() {
         return xbox1.getRawAxis(1);
     }
 
-    public static double getStrafe() {
+    public double getStrafe() {
         return -xbox1.getRawAxis(0);
     }
 
-    public static double getRotation() {
+    public double getRotation() {
         return -xbox1.getRawAxis(4);
     }
 
-    public static boolean lineUp() {
+    public boolean lineUp() {
         return xbox1.getAButton();
     }
 
