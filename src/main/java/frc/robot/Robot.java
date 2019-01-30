@@ -43,13 +43,19 @@ public class Robot extends TimedRobot {
       lineUp.run();
     }
     
+    //Cargo intake/outtake
     if (driverController.getCargoIntake()) {
-      jeff.intake.set(0.5);  //Temporary; This will need testing to decide on a speed for the intake wheels
+      jeff.setIntakeSpeed(0.5);  //Temporary; This will need testing to decide on a speed for the intake wheels
     }
 
-    if (driverController.getCargoRelease()) {
-      jeff.intake.set(-0.5); //Placeholder speed
+    else if (driverController.getCargoRelease()) {
+      jeff.setIntakeSpeed(-0.5); //Placeholder speed
     }
+
+    else {
+      jeff.setIntakeSpeed(0);
+    }
+
   }
 
   @Override

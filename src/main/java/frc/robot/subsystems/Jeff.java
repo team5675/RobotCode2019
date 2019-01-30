@@ -13,4 +13,9 @@ public class Jeff {
     
     public Spark intake = new Spark(4);
 
+    public void setIntakeSpeed(double speed) {
+
+        intake.set(speed);
+    }
+
 }
