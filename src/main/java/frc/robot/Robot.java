@@ -12,15 +12,18 @@ import frc.robot.subsystems.Drive;
 import frc.robot.DriverController;
 import frc.robot.auto.LineUp;
 import frc.robot.subsystems.Jeff;
+import frc.robot.subsystems.Light;
 
 public class Robot extends TimedRobot {
   LineUp lineUp = new LineUp();
   Drive drive = new Drive();
   DriverController driverController = new DriverController();
   Jeff jeff = new Jeff();
+  Light light = new Light();
 
   @Override
   public void robotInit() {
+    light.set(123); //Update the color of the epic LEDs (tells when the robot is done loading)
   }
 
   @Override
@@ -37,16 +40,11 @@ public class Robot extends TimedRobot {
   
   @Override
   public void teleopPeriodic() {
-
-    
+    //Checks to see if robot is lining up with vision, if not, update drive train from controls
     if (driverController.lineUp()){
       lineUp.run();
-    }
-
-    else{
-
+    } else {
       drive.move(driverController.getStrafe(), driverController.getForward(), driverController.getRotation());
-
     }
 
     //Cargo intake/outtake
