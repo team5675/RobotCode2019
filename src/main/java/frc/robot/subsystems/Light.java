@@ -7,8 +7,12 @@
 
 package frc.robot.subsystems;
 
-/**
- * Add your docs here.
- */
+import edu.wpi.first.wpilibj.Spark;
+
 public class Light {
+    Spark light = new Spark(9);
+
+    public void set(int value){
+        light.set(value);
+    }
 }
