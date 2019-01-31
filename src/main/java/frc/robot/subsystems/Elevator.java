@@ -56,8 +56,6 @@ public class Elevator {
 
                 i = controllerSet.length;
             }
-
-            else height = setValue[0];
         }
 
         return height;
