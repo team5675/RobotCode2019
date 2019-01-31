@@ -40,7 +40,7 @@ public class Elevator {
     double[] setValueElevator = {kHatch1, kHatch2, kHatch3, 
         kCargo1, kCargo2, kCargo3};
 
-    double[] setValueForeBar = {kFHatch1, kFHatch2, kFHatch3,
+    double[] setValueForebar = {kFHatch1, kFHatch2, kFHatch3,
         kFCargo1, kFCargo2, kFCargo3};
 
     boolean[] controllerSet = {DriverController.getHatch1(), 
@@ -73,7 +73,7 @@ public class Elevator {
             if (controllerSet[i]){
 
                 eHeight = setValueElevator[i];
-                fHeight = setValueForeBar[i];
+                fHeight = setValueForebar[i];
 
                 i = controllerSet.length;
             }
@@ -90,6 +90,7 @@ public class Elevator {
       if ((DriverController.getElevator() > .2) || (DriverController.getElevator() < -.2)){
 
         masterElevator.set(ControlMode.PercentOutput, DriverController.getElevator());
+        masterForebar.set(ControlMode.PercentOutput, (DriverController.getElevator() * .1));
       }
     }
 }

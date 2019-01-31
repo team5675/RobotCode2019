@@ -16,7 +16,7 @@ import frc.robot.subsystems.Light;
 import frc.robot.subsystems.Elevator;
 
 public class Robot extends TimedRobot {
-  
+
   LineUp lineUp = new LineUp();
   Drive drive = new Drive();
   DriverController driverController = new DriverController();
@@ -26,6 +26,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
+
     light.set(123); //Update the color of the epic LEDs (tells when the robot is done loading)
   }
 
@@ -43,6 +44,7 @@ public class Robot extends TimedRobot {
   
   @Override
   public void teleopPeriodic() {
+    
     //Checks to see if robot is lining up with vision, if not, update drive train from controls
     if (driverController.lineUp()){
       lineUp.run();
