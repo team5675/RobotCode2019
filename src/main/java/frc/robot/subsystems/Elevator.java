@@ -1,14 +1,75 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
-
 package frc.robot.subsystems;
 
-/**
- * Add your docs here.
- */
+import com.ctre.phoenix.motorcontrol.can.*;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+
+import frc.robot.talonConfig.*;
+import frc.robot.DriverController;;
+
+
 public class Elevator {
+
+    public WPI_TalonSRX masterElevator = new WPI_TalonSRX(1);
+    public WPI_TalonSRX slaveElevator = new WPI_TalonSRX(2);
+
+    final static int kMasterElevatorId = 1;
+
+    //emperically measured encoder values here
+    final static double kHatch1 = 0;
+    final static double kHatch2 = 0;
+    final static double kHatch3 = 0;
+
+    final static double kCargo1 = 0;
+    final static double kCargo2 = 0;
+    final static double kCargo3 = 0;
+
+    double[] setValue = {kHatch1, kHatch2, kHatch3, 
+        kCargo1, kCargo2, kCargo3};
+
+    boolean[] controllerSet = {DriverController.getHatch1(), 
+        DriverController.getHatch2(), DriverController.getHatch3(),
+        DriverController.getCargo1(),DriverController.getCargo2(), 
+        DriverController.getCargo3()};
+
+    double height = 0;
+
+    public void run(){
+
+        setHeight();
+        whatHeight();
+    }
+
+    public void config(){
+
+        slaveElevator.follow(masterElevator);
+        talonConfig.configElevator(masterElevator);
+    }
+
+    public double setHeight(){
+
+
+        for (int i = 0; i < controllerSet.length; i++){
+
+            if (controllerSet[i]){
+
+                height = setValue[i];
+
+                i = controllerSet.length;
+            }
+
+            else height = setValue[0];
+        }
+
+        return height;
+    }
+
+    public void whatHeight(){
+
+      
+      masterElevator.set(ControlMode.MotionMagic, height);
+      slaveElevator.set(ControlMode.Follower, kMasterElevatorId);
+    }
+
+    
 }
+
