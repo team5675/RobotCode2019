@@ -13,6 +13,7 @@ import frc.robot.DriverController;
 import frc.robot.auto.LineUp;
 import frc.robot.subsystems.Jeff;
 import frc.robot.subsystems.Light;
+import frc.robot.subsystems.Elevator;
 
 public class Robot extends TimedRobot {
   LineUp lineUp = new LineUp();
@@ -20,6 +21,7 @@ public class Robot extends TimedRobot {
   DriverController driverController = new DriverController();
   Jeff jeff = new Jeff();
   Light light = new Light();
+  Elevator elevator = new Elevator();
 
   @Override
   public void robotInit() {
@@ -55,6 +57,9 @@ public class Robot extends TimedRobot {
     } else {
       jeff.setIntakeSpeed(0);
     }
+
+    //elevator controls
+    elevator.run();
   }
 
   @Override

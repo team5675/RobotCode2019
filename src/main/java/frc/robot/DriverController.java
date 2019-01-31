@@ -58,7 +58,7 @@ public class DriverController {
         return (xbox2.getTriggerAxis(Hand.kRight)) == 1;
     }
 
-    public double getElevator() {
+    public static double getElevator() {
         return -(xbox2.getRawAxis(0));
     }
 

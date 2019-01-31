@@ -1,6 +1,9 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.*;
+
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import frc.robot.talonConfig.*;
@@ -14,7 +17,8 @@ public class Elevator {
 
     final static int kMasterElevatorId = 1;
 
-    //emperically measured encoder values here
+    //emperically measured encoder values here 
+    //****4096 ticks is full encoder revolution****
     final static double kHatch1 = 0;
     final static double kHatch2 = 0;
     final static double kHatch3 = 0;
@@ -41,8 +45,10 @@ public class Elevator {
 
     public void config(){
 
-        slaveElevator.follow(masterElevator);
         talonConfig.configElevator(masterElevator);
+        talonConfig.configElevator(slaveElevator);
+        
+        slaveElevator.follow(masterElevator);
     }
 
     public double setHeight(){
@@ -56,8 +62,6 @@ public class Elevator {
 
                 i = controllerSet.length;
             }
-
-            else height = setValue[0];
         }
 
         return height;
@@ -65,11 +69,13 @@ public class Elevator {
 
     public void whatHeight(){
 
-      
-      masterElevator.set(ControlMode.MotionMagic, height);
+      masterElevator.set(ControlMode.Position, height);
       slaveElevator.set(ControlMode.Follower, kMasterElevatorId);
-    }
 
-    
+      if ((DriverController.getElevator() > .2) || (DriverController.getElevator() < -.2)){
+
+        masterElevator.set(ControlMode.PercentOutput, DriverController.getElevator());
+      }
+    }
 }
 
