@@ -16,6 +16,7 @@ import frc.robot.subsystems.Light;
 import frc.robot.subsystems.Elevator;
 
 public class Robot extends TimedRobot {
+  
   LineUp lineUp = new LineUp();
   Drive drive = new Drive();
   DriverController driverController = new DriverController();
