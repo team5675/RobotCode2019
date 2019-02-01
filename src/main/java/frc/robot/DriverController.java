@@ -55,7 +55,7 @@ public class DriverController {
     }
 
     public double getCargoRelease() {
-        return -(xbox2.getTriggerAxis(Hand.kRight));
+        return xbox2.getTriggerAxis(Hand.kRight);
     }
 
     public double getElevator() {

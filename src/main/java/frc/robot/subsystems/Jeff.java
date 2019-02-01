@@ -12,13 +12,23 @@ import edu.wpi.first.wpilibj.Spark;
 public class Jeff {
 
     
-    public Spark intake = new Spark(4); //wheel motor
+    public Spark cargoIntake = new Spark(4); //wheel motor
 
-    
+    public Spark hatchIntake = new Spark(5); //Drop down hatch pickup
+    public Spark hatchRelease = new Spark(6); //For the cam outtake
+
+
 
     public void setIntakeSpeed(double speed) {
 
-        intake.set(speed);
+        cargoIntake.set(speed);
     }
+
+    public void hatchRelease() {
+
+        hatchRelease.set(0.8); //Speed is temporary
+    }
+
+
 
 }
