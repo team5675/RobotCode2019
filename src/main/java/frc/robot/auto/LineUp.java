@@ -19,19 +19,12 @@ public class LineUp {
 
     public void run(){
         double[] centerXReport = vision.runFrontVisionCenterX();
-        if (centerXReport.length < 3){
-            double x = (centerXReport[0] + ((centerXReport[1] - centerXReport[0])/2) - 80)/80; //Center between vision targets
-            
-            double[] areaReport = vision.runFrontVisionArea();
-            double left = areaReport[0];
-            double right = areaReport[1];
-            double meanArea = (left + right)/2; //I have been looking at this for 15 minutes and
-            double y = (left - meanArea)/meanArea; //have yet to comprehend how it will work in any way - Max
+        //double x = (centerXReport[0] + ((centerXReport[1] - centerXReport[0])/2) - 320)/320; //Center between vision targets
+        double centerX =((centerXReport[0] + centerXReport[1])/ 2);
+        double x = ((centerX - 320) / 320);
 
-            drive.move(x * 2, y, 0); //i forgot what side is rotate and im to lazy to look it up
-            //doing * 2 kind of like a nitrous boost
-        } else {
-            System.out.println("MORE THAN TWO CONTOURS!!!");
-        }
+        //System.out.println("X: " + x );
+        drive.move(x * .7, driverController.getForward(), 0); //i forgot what side is rotate and im to lazy to look it up
+        //doing * 2 kind of like a nitrous boost
     }
 }
