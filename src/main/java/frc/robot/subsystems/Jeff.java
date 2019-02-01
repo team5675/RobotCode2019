@@ -10,8 +10,11 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.Spark;
 
 public class Jeff {
+
     
-    public Spark intake = new Spark(4);
+    public Spark intake = new Spark(4); //wheel motor
+
+    
 
     public void setIntakeSpeed(double speed) {
 
