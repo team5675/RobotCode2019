@@ -29,6 +29,4 @@ public class Jeff {
         hatchRelease.set(0.8); //Speed is temporary
     }
 
-
-
 }
