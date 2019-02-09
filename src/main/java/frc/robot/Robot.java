@@ -27,6 +27,9 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
 
+    elevator.config();
+    drive.config();
+
     light.set(123); //Update the color of the epic LEDs (tells when the robot is done loading)
   }
 
@@ -40,6 +43,8 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousPeriodic() {
+
+    teleopPeriodic();
   }
   
   @Override

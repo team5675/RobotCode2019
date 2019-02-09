@@ -14,8 +14,7 @@ public class Jeff {
     
     public Spark cargoIntake = new Spark(4); //wheel motor
 
-    public Spark hatchIntake = new Spark(5); //Drop down hatch pickup
-    public Spark hatchRelease = new Spark(6); //For the cam outtake
+    public Spark hatchPickup = new Spark(5); //For the ground pickup
 
 
 
@@ -24,9 +23,9 @@ public class Jeff {
         cargoIntake.set(speed);
     }
 
-    public void hatchRelease() {
+    public void hatchPickup() {
 
-        hatchRelease.set(0.8); //Speed is temporary
+        hatchPickup.set(0.8); //Speed is temporary
     }
 
 }
