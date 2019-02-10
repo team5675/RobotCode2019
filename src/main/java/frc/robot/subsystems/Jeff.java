@@ -14,8 +14,6 @@ public class Jeff {
     
     public Spark cargoIntake = new Spark(4); //wheel motor
 
-    public Spark hatchPickup = new Spark(5); //For the ground pickup
-
 
 
     public void setIntakeSpeed(double speed) {
@@ -23,9 +21,5 @@ public class Jeff {
         cargoIntake.set(speed);
     }
 
-    public void hatchPickup() {
-
-        hatchPickup.set(0.8); //Speed is temporary
-    }
 
 }
