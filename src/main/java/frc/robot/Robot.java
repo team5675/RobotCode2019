@@ -14,6 +14,7 @@ import frc.robot.auto.LineUp;
 import frc.robot.subsystems.Jeff;
 import frc.robot.subsystems.Light;
 import frc.robot.subsystems.Elevator;
+import frc.robot.subsystems.Ham;
 
 public class Robot extends TimedRobot {
 
@@ -23,6 +24,7 @@ public class Robot extends TimedRobot {
   Jeff jeff = new Jeff();
   Light light = new Light();
   Elevator elevator = new Elevator();
+  Ham ham = new Ham();
 
   @Override
   public void robotInit() {
@@ -65,6 +67,9 @@ public class Robot extends TimedRobot {
     }
     //elevator controls
     elevator.run();
+
+    //ham controls
+    ham.startClimbing();
   }
 
   
