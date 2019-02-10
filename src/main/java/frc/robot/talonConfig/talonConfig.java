@@ -30,9 +30,6 @@ masterElevator.config_kI(Constants.kSlotIdx, Constants.kGains.kI, Constants.kTim
 masterElevator.config_kD(Constants.kSlotIdx, Constants.kGains.kD, Constants.kTimeoutMs);
 masterElevator.config_IntegralZone(Constants.kSlotIdx, Constants.kGains.kIzone, Constants.kTimeoutMs);
 
-// Set acceleration and velocity
-masterElevator.configMotionCruiseVelocity(15000, Constants.kTimeoutMs);
-masterElevator.configMotionAcceleration(6000, Constants.kTimeoutMs);
 
 int absolutePosition = masterElevator.getSensorCollection().getPulseWidthPosition();
 

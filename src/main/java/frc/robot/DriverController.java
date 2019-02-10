@@ -34,12 +34,12 @@ public class DriverController {
         return xbox1.getYButton();
     }
 
-    public boolean getClimb2() {
-        return xbox1.getBumper(Hand.kLeft);
+    public boolean getClimb3B() {
+        return xbox2.getStartButton();
     }
 
-    public boolean getClimb3() {
-        return xbox1.getBumper(Hand.kRight);
+    public boolean getClimb3A() {
+        return xbox1.getStartButton();
     }
 
     public boolean getHatchIntake() {
