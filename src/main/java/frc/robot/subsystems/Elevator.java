@@ -10,9 +10,7 @@ import frc.robot.DriverController;;
 public class Elevator {
 
     public WPI_TalonSRX masterElevator = new WPI_TalonSRX(5);
-
     public WPI_TalonSRX masterFourbar = new WPI_TalonSRX(6);
-
 
     //emperically measured encoder values here 
     //****4096 ticks is full encoder revolution****
