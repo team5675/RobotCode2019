@@ -7,18 +7,25 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Spark;
 
 public class Jeff {
 
     
-    public Spark cargoIntake = new Spark(4); //wheel motor
+    Spark cargoIntake = new Spark(4); //wheel motor
+    DigitalInput cargoSwitch = new DigitalInput(1);
+
 
 
 
     public void setIntakeSpeed(double speed) {
-
-        cargoIntake.set(speed);
+        if (speed <= 0){
+            cargoIntake.set(speed);
+        } 
+        else if (cargoSwitch.get()) {
+            cargoIntake.set(speed);
+        }
     }
 
 
