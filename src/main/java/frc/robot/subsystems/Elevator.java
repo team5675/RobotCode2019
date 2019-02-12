@@ -84,5 +84,9 @@ public class Elevator {
         masterFourbar.set(ControlMode.PercentOutput, (DriverController.getElevator() * .1));
       }
     }
+
+    public void hatchRelease() {
+        
+    }
 }
 
