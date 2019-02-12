@@ -103,5 +103,9 @@ public class Elevator {
         masterFourbar.set(ControlMode.Position, fHeight);
       }
     }
+
+    public void hatchRelease() {
+        
+    }
 }
 
