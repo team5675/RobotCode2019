@@ -59,7 +59,11 @@ public class DriverController {
     }
 
     public static double getElevator() {
-        return -(xbox2.getRawAxis(0));
+        return -(xbox2.getRawAxis(1));
+    }
+
+    public static double getJeff() {
+        return xbox2.getRawAxis(5);
     }
 
     public static boolean getCargo1() {
@@ -72,6 +76,10 @@ public class DriverController {
 
     public static boolean getCargo3() {
         return xbox2.getYButton();
+    }
+
+    public static boolean manualMode() {
+        return xbox2.getXButtonPressed();
     }
 
     public static boolean getHatch1() {
