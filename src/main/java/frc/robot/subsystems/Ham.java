@@ -29,8 +29,8 @@ public class Ham {
         if (controller.getClimb3A() && controller.getClimb3B()) {
 
             while (HAMLimit.get()){
-                ham1.set(ControlMode.PercentOutput, -1);
-                ham2.set(ControlMode.PercentOutput, -1);
+                ham1.set(ControlMode.PercentOutput, 1);
+                ham2.set(ControlMode.PercentOutput, 1);
             }
 
             ham1.set(ControlMode.PercentOutput, 0);
