@@ -42,16 +42,16 @@ public class DriverController {
         return xbox1.getStartButton();
     }
 
-    public boolean getHatchIntake() {
+    public boolean getHatchUp() {
         return xbox2.getBumper(Hand.kLeft);
     }
 
-    public boolean getHatchRelease() {
-        return (xbox2.getTriggerAxis(Hand.kLeft)) == 1; 
+    public boolean getHatchDown() {
+        return xbox2.getBumper(Hand.kRight); 
     }
 
-    public boolean getCargoIntake() {
-        return xbox2.getBumper(Hand.kRight);
+    public double getCargoIntake() {
+        return xbox2.getTriggerAxis(Hand.kLeft);
     }
 
     public double getCargoRelease() {

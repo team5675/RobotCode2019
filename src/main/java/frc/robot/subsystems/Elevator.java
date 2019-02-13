@@ -74,7 +74,7 @@ public class Elevator {
                 eHeight = setValueElevator[i];
                 fHeight = setValueFourbar[i];
 
-                i = controllerSet.length;
+                break;
             }
         }
     }
@@ -102,8 +102,8 @@ public class Elevator {
 
       else {
 
-        masterElevator.set(ControlMode.Position, eHeight);
-        masterFourbar.set(ControlMode.Position, fHeight);
+        masterElevator.set(ControlMode.MotionMagic, eHeight);
+        masterFourbar.set(ControlMode.MotionMagic, fHeight);
       }
     }
 }

@@ -33,14 +33,11 @@ public class Ham {
 
             while (HAMLimit.get()){
                 ham1.set(ControlMode.PercentOutput, 1);
-                ham2.set(ControlMode.Follower, 10);
             }
 
             ham1.set(ControlMode.PercentOutput, 0);
-            ham2.set(ControlMode.Follower, 10);
         }
 
         ham1.set(ControlMode.PercentOutput, 0);
-        ham2.set(ControlMode.Follower, 10);
     }
 }

@@ -7,7 +7,7 @@ public class talonConfig {
 
 public static void configElevator (WPI_TalonSRX masterElevator) {
 
-masterElevator.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute,
+masterElevator.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative,
                                             Constants.kPIDLoopIdx, 
                                             Constants.kTimeoutMs);
 
@@ -24,21 +24,19 @@ masterElevator.configPeakOutputReverse(-1, Constants.kTimeoutMs);
 masterElevator.configAllowableClosedloopError(Constants.kPIDLoopIdx, 0, Constants.kTimeoutMs);
 
 //configure the loops
+masterElevator.selectProfileSlot(Constants.kSlotIdx, Constants.kPIDLoopIdx);
 masterElevator.config_kF(Constants.kSlotIdx, Constants.kGains.kF, Constants.kTimeoutMs);
 masterElevator.config_kP(Constants.kSlotIdx, Constants.kGains.kP, Constants.kTimeoutMs);
 masterElevator.config_kI(Constants.kSlotIdx, Constants.kGains.kI, Constants.kTimeoutMs);
 masterElevator.config_kD(Constants.kSlotIdx, Constants.kGains.kD, Constants.kTimeoutMs);
 masterElevator.config_IntegralZone(Constants.kSlotIdx, Constants.kGains.kIzone, Constants.kTimeoutMs);
 
+//set accel and velocity
+masterElevator.configMotionCruiseVelocity(15000, Constants.kTimeoutMs);
+masterElevator.configMotionAcceleration(6000, Constants.kTimeoutMs);
 
-int absolutePosition = masterElevator.getSensorCollection().getPulseWidthPosition();
-
-//keeps loop from overflowing
-absolutePosition &= 0xFF;
-if (Constants.kSensorPhase) { absolutePosition *= -1; }
-if (Constants.kMotorInvert) { absolutePosition *= -1; }
 
 // set sensor to 0
-masterElevator.setSelectedSensorPosition(absolutePosition, Constants.kPIDLoopIdx, Constants.kTimeoutMs);
+masterElevator.setSelectedSensorPosition(0, Constants.kPIDLoopIdx, Constants.kTimeoutMs);
 } 
 }
