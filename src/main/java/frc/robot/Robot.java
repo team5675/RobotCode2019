@@ -25,6 +25,7 @@ public class Robot extends TimedRobot {
   Light light = new Light();
   Elevator elevator = new Elevator();
   Ham ham = new Ham();
+  Dashboard dashboard = new Dashboard();
 
   @Override
   public void robotInit() {
@@ -33,6 +34,7 @@ public class Robot extends TimedRobot {
     drive.config();
 
     light.set(123); //Update the color of the epic LEDs (tells when the robot is done loading)
+    dashboard.init();
   }
 
   @Override
@@ -51,7 +53,6 @@ public class Robot extends TimedRobot {
   
   @Override
   public void teleopPeriodic() {
-    
     //Checks to see if robot is lining up with vision, if not, update drive train from controls
     if (driverController.lineUp()){
       lineUp.run();
@@ -70,6 +71,9 @@ public class Robot extends TimedRobot {
 
     //ham controls
     ham.startClimbing();
+
+    //Runs all the loops
+    elevator.loop();
   }
 
   
