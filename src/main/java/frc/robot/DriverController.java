@@ -62,20 +62,35 @@ public class DriverController {
         return -(xbox2.getRawAxis(1));
     }
 
-    public static double getJeff() {
+    public static double get4Bar() {
         return xbox2.getRawAxis(5);
     }
 
     public static boolean getCargo1() {
-        return xbox2.getAButton();
+
+        if (xbox2.getAButton()) {
+            return true;
+        }
+
+        else { return false;}
     }
 
     public static boolean getCargo2() {
-        return xbox2.getBButton();
+    
+        if (xbox2.getBButton()) {
+            return true;
+        }
+
+        else { return false;}
     }
 
     public static boolean getCargo3() {
-        return xbox2.getYButton();
+     
+        if (xbox2.getYButton()) {
+            return true;
+        }
+
+        else { return false;}
     }
 
     public static boolean manualMode() {
@@ -83,14 +98,29 @@ public class DriverController {
     }
 
     public static boolean getHatch1() {
-        return xbox2.getRawAxis(7) == 1;
+
+        if (xbox2.getRawAxis(7) == 1) {
+            return true;
+        }
+
+        else {return false;}
     }
 
     public static boolean getHatch2() {
-        return xbox2.getRawAxis(6) == -1;
+        
+        if (xbox2.getRawAxis(6) == -1) {
+            return true;
+        }
+
+        else {return false;}
     }
 
     public static boolean getHatch3() {
-        return xbox2.getRawAxis(7) == -1;
+        
+        if (xbox2.getRawAxis(7) == -1) {
+            return true;
+        }
+
+        else {return false;}
     }
 }

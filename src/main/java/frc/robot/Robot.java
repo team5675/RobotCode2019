@@ -9,6 +9,7 @@ package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
+import edu.wpi.first.wpilibj.Controller;
 import edu.wpi.first.wpilibj.TimedRobot;
 import frc.robot.subsystems.Drive;
 import frc.robot.DriverController;
@@ -17,6 +18,7 @@ import frc.robot.subsystems.Jeff;
 import frc.robot.subsystems.Light;
 import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.Ham;
+
 
 public class Robot extends TimedRobot {
 
@@ -68,12 +70,11 @@ public class Robot extends TimedRobot {
       jeff.setIntakeSpeed(driverController.getCargoRelease()); //Placeholder speed
     }
     //elevator controls
-    elevator.run();
+    //elevator.run();
 
-    //elevator.masterElevator.set(ControlMode.PercentOutput, driverController.getElevator());
-
+    elevator.masterElevator.set(ControlMode.PercentOutput, driverController.getElevator());
     //ham controls
-    ham.startClimbing();
+    ham.Climb();
   }
 
   

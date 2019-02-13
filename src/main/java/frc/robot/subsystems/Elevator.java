@@ -9,6 +9,7 @@ import frc.robot.DriverController;;
 
 public class Elevator {
 
+
     public WPI_TalonSRX masterElevator = new WPI_TalonSRX(5);
     public WPI_TalonSRX masterFourbar = new WPI_TalonSRX(6);
 
@@ -63,10 +64,9 @@ public class Elevator {
 
     public void setHeight(){
 
-
         for (int i = 0; i < controllerSet.length; i++){
 
-            if (!controllerSet[i]){
+            if (controllerSet[i] == true){
 
                 eHeight = setValueElevator[i];
                 fHeight = setValueFourbar[i];
@@ -94,7 +94,7 @@ public class Elevator {
       if (manualMode){
 
         masterElevator.set(ControlMode.PercentOutput, DriverController.getElevator());
-        masterFourbar.set(ControlMode.PercentOutput, (DriverController.getJeff()));
+        masterFourbar.set(ControlMode.PercentOutput, DriverController.get4Bar());
       }
 
       else {
@@ -103,9 +103,4 @@ public class Elevator {
         masterFourbar.set(ControlMode.Position, fHeight);
       }
     }
-
-    public void hatchRelease() {
-        
-    }
 }
-
