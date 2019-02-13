@@ -9,8 +9,8 @@ package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
-import edu.wpi.first.wpilibj.Controller;
 import edu.wpi.first.wpilibj.TimedRobot;
+
 import frc.robot.subsystems.Drive;
 import frc.robot.DriverController;
 import frc.robot.auto.LineUp;
