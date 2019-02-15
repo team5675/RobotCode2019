@@ -19,7 +19,7 @@ public class Jeff {
 
     DriverController controller = new DriverController();
     DigitalInput cargoSwitch = new DigitalInput(1);
-    Encoder hatchEncoder = new Encoder(3, 4);
+    Encoder hatchEncoder = new Encoder(2, 3);
 
     double jeffSpeed = 0;
 

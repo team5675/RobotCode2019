@@ -17,8 +17,9 @@ import frc.robot.DriverController;
  * Add your docs here.
  */
 public class Ham {
+    DigitalInput HAMLimit = new DigitalInput(4);
+    DigitalInput HAMLimit2 = new DigitalInput(5);
 
-    DigitalInput HAMLimit = new DigitalInput(0);
     DriverController controller = new DriverController();
 
     WPI_VictorSPX ham1 = new WPI_VictorSPX(10);
@@ -35,9 +36,19 @@ public class Ham {
                 ham1.set(ControlMode.PercentOutput, 1);
             }
 
+            while (!HAMLimit.get()) {
+
+                ham1.set(ControlMode.PercentOutput, -1);
+
+                if (HAMLimit2.get()) {
+
+                    ham1.set(ControlMode.PercentOutput, 0);
+                }
+            }
+
             ham1.set(ControlMode.PercentOutput, 0);
         }
 
         ham1.set(ControlMode.PercentOutput, 0);
-    }
+    } 
 }

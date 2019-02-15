@@ -75,9 +75,7 @@ public class Robot extends TimedRobot {
     jeff.run();
 
     //elevator controls
-    //elevator.run();
-
-    elevator.masterElevator.set(ControlMode.PercentOutput, driverController.getElevator());
+    elevator.run();
 
     //ham controls
     ham.Climb();

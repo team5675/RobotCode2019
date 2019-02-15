@@ -2,8 +2,6 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.*;
 
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import frc.robot.talonConfig.*;
@@ -22,7 +20,7 @@ public class Elevator {
     final static double kHatch2 = 4096;
     final static double kHatch3 = 8192;
 
-    final static double kCargo1 = 2048;
+    final static double kCargo1 = 20480;
     final static double kCargo2 = 40960;
     final static double kCargo3 = 614400;
 
@@ -34,10 +32,10 @@ public class Elevator {
     final static double kFCargo2 = 2500;
     final static double kFCargo3 = 35000;
 
-    double[] setValueElevator = {kHatch1, kHatch2, kHatch3, 
+    double[] setElevator = {kHatch1, kHatch2, kHatch3, 
         kCargo1, kCargo2, kCargo3};
 
-    double[] setValueFourbar = {kFHatch1, kFHatch2, kFHatch3,
+    double[] setFourbar = {kFHatch1, kFHatch2, kFHatch3,
         kFCargo1, kFCargo2, kFCargo3};
 
     boolean[] controllerSet = {DriverController.getHatch1(), 
@@ -53,10 +51,12 @@ public class Elevator {
 
     public void run(){
 
-        setHeight();
+        //setHeight();
         goToHeight();
 
+
         System.out.println(masterElevator.getSelectedSensorPosition());
+        System.out.println(DriverController.getCargo1());
     }
 
     public void config(){
@@ -67,16 +67,52 @@ public class Elevator {
 
     public void setHeight(){
 
-        for (int i = 0; i < controllerSet.length; i++){
+        if (controllerSet[1]) {
 
-            if (controllerSet[i] == true){
+            eHeight = setElevator[1];
+            fHeight = setFourbar[1];
+        }
 
-                eHeight = setValueElevator[i];
-                fHeight = setValueFourbar[i];
+        else if (controllerSet[2]) {
+
+            eHeight = setElevator[2];
+            fHeight = setFourbar[2];
+        }
+
+        else if (controllerSet[3]) {
+
+            eHeight = setElevator[3];
+            fHeight = setFourbar[3];
+        }
+
+        else if (controllerSet[4]) {
+
+            eHeight = setElevator[4];
+            fHeight = setFourbar[4];
+        }
+
+        else if (controllerSet[5]) {
+
+            eHeight = setElevator[5];
+            fHeight = setFourbar[5];
+        }
+
+        else {
+
+            eHeight = setElevator[0];
+            fHeight = setFourbar[0];
+        }
+
+       /* for (int i = 0; i < controllerSet.length; i++){
+
+            if (controllerSet[i] = true){
+
+                eHeight = setElevator[i];
+                fHeight = setFourbar[i];
 
                 break;
             }
-        }
+        } */
     }
 
 
@@ -100,7 +136,7 @@ public class Elevator {
         masterFourbar.set(ControlMode.PercentOutput, DriverController.get4Bar());
       }
 
-      else {
+      else{
 
         masterElevator.set(ControlMode.MotionMagic, eHeight);
         masterFourbar.set(ControlMode.MotionMagic, fHeight);
