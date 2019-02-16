@@ -11,6 +11,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import frc.robot.DriverController;
 
 /**
@@ -33,12 +34,20 @@ public class Ham {
         if (controller.getClimb3A() && controller.getClimb3B()) {
 
             while (HAMLimit.get()){
+
+                DriverController.xbox1.setRumble(RumbleType.kLeftRumble, .5);
+                DriverController.xbox2.setRumble(RumbleType.kRightRumble, .5);
+
                 ham1.set(ControlMode.PercentOutput, 1);
             }
 
             while (!HAMLimit.get()) {
 
                 ham1.set(ControlMode.PercentOutput, -1);
+
+                DriverController.xbox1.setRumble(RumbleType.kLeftRumble, .5);
+                DriverController.xbox2.setRumble(RumbleType.kRightRumble, .5);
+
 
                 if (HAMLimit2.get()) {
 
