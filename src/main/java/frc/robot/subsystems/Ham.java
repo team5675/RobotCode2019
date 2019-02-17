@@ -11,6 +11,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Spark;
 import frc.robot.DriverController;
 
 /**
@@ -23,6 +24,7 @@ public class Ham {
 
     WPI_VictorSPX ham1 = new WPI_VictorSPX(10);
     WPI_VictorSPX ham2 = new WPI_VictorSPX(11);
+    Spark pullPork = new Spark(8);
 
 
     public void Climb(){
@@ -30,14 +32,21 @@ public class Ham {
         ham2.follow(ham1);
 
         if (controller.getClimb3A() && controller.getClimb3B()) {
-
-            while (HAMLimit.get()){
-                ham1.set(ControlMode.PercentOutput, 1);
+            System.out.println(HAMLimit.get());
+            while (HAMLimit.get() == false){
+                ham1.set(ControlMode.PercentOutput, -0.5);
             }
-
+        } else if (controller.getHamRetract()) {
+            ham1.set(1);
+            System.out.println("setting to 0.5");
+        } else {
             ham1.set(ControlMode.PercentOutput, 0);
+            System.out.println("setting to 0");
         }
 
+        System.out.println(controller.getHamRetract());
+
+       // pullPork.set(DriverController.getElevator());
         ham1.set(ControlMode.PercentOutput, 0);
     }
 }

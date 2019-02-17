@@ -39,8 +39,7 @@ public class Robot extends TimedRobot {
     elevator.config();
     drive.config();
 
-    light.set(123); //Update the color of the epic LEDs (tells when the robot is done loading)
-    dashboard.init();
+    light.set(-0.85); //Update the color of the epic LEDs (tells when the robot is done loading)
   }
 
   @Override
@@ -81,6 +80,9 @@ public class Robot extends TimedRobot {
 
     //ham controls
     ham.Climb();
+
+    //Loops
+    dashboard.loop();
   }
 
   

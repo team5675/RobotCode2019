@@ -123,4 +123,8 @@ public class DriverController {
 
         else {return false;}
     }
+
+    public boolean getHamRetract() {
+        return xbox2.getBackButton();
+    }
 }

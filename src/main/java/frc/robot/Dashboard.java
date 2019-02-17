@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Dashboard {
-    public void init(){
+    public void loop(){
         SmartDashboard.putNumber("voltage", RobotController.getBatteryVoltage());
     }
 }
