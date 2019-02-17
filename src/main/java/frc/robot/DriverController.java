@@ -11,8 +11,8 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 
 public class DriverController {
-    static XboxController xbox1 = new XboxController(0); //main driver
-    static XboxController xbox2 = new XboxController(1); //aux driver
+    public static XboxController xbox1 = new XboxController(0); //main driver
+    public static XboxController xbox2 = new XboxController(1); //aux driver
 
     public double getForward() {
         return xbox1.getRawAxis(1);
