@@ -10,7 +10,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.Spark;
 
 public class Light {
-    Spark light = new Spark(9);
+    Spark light = new Spark(10);
 
     public void set(int value){
         light.set(value);

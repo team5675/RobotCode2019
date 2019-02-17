@@ -10,7 +10,7 @@ public static void configElevator (WPI_TalonSRX _talon) {
 
 _talon.configFactoryDefault();
 
-_talon.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative,
+_talon.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute,
                                             Constants.kPIDLoopIdx, 
                                             Constants.kTimeoutMs);
 
@@ -41,6 +41,6 @@ _talon.configMotionAcceleration(6000, Constants.kTimeoutMs);
 
 
 // set sensor to 0
-_talon.setSelectedSensorPosition(0, Constants.kPIDLoopIdx, Constants.kTimeoutMs);
+//_talon.setSelectedSensorPosition(0, Constants.kPIDLoopIdx, Constants.kTimeoutMs);
 } 
 }

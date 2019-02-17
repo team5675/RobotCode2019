@@ -4,7 +4,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 public class driveTalonConfig {
 
-    public static double DRIVE_DEADBAND = .04;
+    public static double DRIVE_DEADBAND = .2;
 
     public static void configDrive( WPI_TalonSRX driveTalon){
 
