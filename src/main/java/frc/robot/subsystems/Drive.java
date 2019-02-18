@@ -8,12 +8,10 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
-import frc.robot.talonConfig.driveTalonConfig;
+import frc.robot.config.driveTalonConfig;
 
 public class Drive {
-    
     static WPI_TalonSRX m_frontLeft = new WPI_TalonSRX(3);//Motor Controllers
     static WPI_TalonSRX m_frontRight = new WPI_TalonSRX(4);//for drive train
     static WPI_TalonSRX m_backLeft = new WPI_TalonSRX(2);
@@ -22,7 +20,6 @@ public class Drive {
     static MecanumDrive chassis = new MecanumDrive(m_frontLeft, m_backLeft, m_frontRight, m_backRight);
 
     public void config(){
-
         driveTalonConfig.configDrive(m_frontLeft);
         driveTalonConfig.configDrive(m_frontRight);
         driveTalonConfig.configDrive(m_backLeft);
@@ -30,7 +27,6 @@ public class Drive {
     }
     
     public void move(double x, double y, double z) {
-
         chassis.driveCartesian(x, y, z);
     }
 }
