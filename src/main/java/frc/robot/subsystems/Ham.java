@@ -55,6 +55,9 @@ public class Ham {
                 }
             }
 
+            DriverController.xbox1.setRumble(RumbleType.kLeftRumble, 0);
+            DriverController.xbox2.setRumble(RumbleType.kRightRumble, 0);
+
             ham1.set(ControlMode.PercentOutput, 0);
         }
 
