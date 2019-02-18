@@ -15,12 +15,12 @@ import frc.robot.DriverController;
 
 public class Jeff {
 
-    Spark cargo = new Spark(6); //wheel motor
-    Spark hatch = new Spark(7); //hatch motor
+    Spark cargo = new Spark(7); //wheel motor
+    //Spark hatch = new Spark(8); //hatch motor
 
     DriverController controller = new DriverController();
-    DigitalInput cargoSwitch = new DigitalInput(1);
-    Encoder hatchEncoder = new Encoder(3, 4);
+    DigitalInput cargoSwitch = new DigitalInput(6);
+    Encoder hatchEncoder = new Encoder(13, 14);
 
     double jeffSpeed = 0;
 
@@ -33,16 +33,20 @@ public class Jeff {
         hatchGround();
     }
 
+
     public void setSpeed() {
         
-        jeffSpeed = controller.getCargoIntake() - controller.getCargoRelease();
+        jeffSpeed = controller.getCargoRelease() - controller.getCargoIntake();
 
         if (cargoSwitch.get()) {
 
-            cargo.set(0);
+            if (jeffSpeed < 0) {
+
+                jeffSpeed = 0;
+            }
         }
 
-        else { cargo.set(jeffSpeed); }
+        cargo.set(jeffSpeed);
         
     }
 
@@ -52,20 +56,22 @@ public class Jeff {
 
             if (hatchEncoder.get() > HATCH_DOWN) {
 
-            hatch.set(-1);
+            //hatch.set(-1);
             }
 
-            else { hatch.set(0); }
+            else { //hatch.set(0); 
+            }
         }
 
         if (controller.getHatchUp()) {
 
             if (hatchEncoder.get() < HATCH_UP) {
 
-                hatch.set(1);
+                //hatch.set(1);
             }
 
-            else { hatch.set(0); }
+            else { //hatch.set(0); 
+            }
         }
     }
 }

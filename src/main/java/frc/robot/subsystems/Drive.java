@@ -17,7 +17,7 @@ public class Drive {
     static WPI_TalonSRX m_frontLeft = new WPI_TalonSRX(3);//Motor Controllers
     static WPI_TalonSRX m_frontRight = new WPI_TalonSRX(4);//for drive train
     static WPI_TalonSRX m_backLeft = new WPI_TalonSRX(2);
-    static WPI_TalonSRX m_backRight = new WPI_TalonSRX(10);
+    static WPI_TalonSRX m_backRight = new WPI_TalonSRX(1);
 
     static MecanumDrive chassis = new MecanumDrive(m_frontLeft, m_backLeft, m_frontRight, m_backRight);
 

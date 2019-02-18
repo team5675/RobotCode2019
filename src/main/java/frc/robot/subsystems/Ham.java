@@ -18,8 +18,9 @@ import frc.robot.DriverController;
  * Add your docs here.
  */
 public class Ham {
+    DigitalInput HAMLimit = new DigitalInput(4);
+    DigitalInput HAMLimit2 = new DigitalInput(5);
 
-    DigitalInput HAMLimit = new DigitalInput(0);
     DriverController controller = new DriverController();
 
     WPI_VictorSPX ham1 = new WPI_VictorSPX(10);
@@ -32,7 +33,7 @@ public class Ham {
         ham2.follow(ham1);
 
         if (controller.getClimb3A() && controller.getClimb3B()) {
-            System.out.println(HAMLimit.get());
+            System.out.println("hham" + HAMLimit.get());
             while (HAMLimit.get() == false){
                 ham1.set(ControlMode.PercentOutput, -0.5);
             }
@@ -44,9 +45,7 @@ public class Ham {
             System.out.println("setting to 0");
         }
 
-        System.out.println(controller.getHamRetract());
-
        // pullPork.set(DriverController.getElevator());
         ham1.set(ControlMode.PercentOutput, 0);
-    }
+    } 
 }

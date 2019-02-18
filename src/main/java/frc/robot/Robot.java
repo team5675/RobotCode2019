@@ -7,8 +7,6 @@
 
 package frc.robot;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
-
 import edu.wpi.first.wpilibj.TimedRobot;
 
 import frc.robot.DriverController;
@@ -67,6 +65,7 @@ public class Robot extends TimedRobot {
 
     else {
 
+      //drive.move(0, 0.1, 0);
       drive.move(driverController.getStrafe(), driverController.getForward(), driverController.getRotation());
     }
 
@@ -74,9 +73,7 @@ public class Robot extends TimedRobot {
     jeff.run();
 
     //elevator controls
-    //elevator.run();
-
-    elevator.masterElevator.set(ControlMode.PercentOutput, driverController.getElevator());
+    elevator.run();
 
     //ham controls
     ham.Climb();
