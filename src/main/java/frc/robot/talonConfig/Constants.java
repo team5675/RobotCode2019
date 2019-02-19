@@ -9,7 +9,7 @@ public class Constants{
 	public static boolean kMotorInvert = false;
 
 	                                //kp, ki, kd, kf, izone, peak output
-    public static final Gains kGains = new Gains(0.004, 0.0, 0.0, 0.0, 0, 0.5);
+    public static final Gains kGains = new Gains(0.05, 0.0, 1.0, 0.0, 0, 1);
 
 
 }
