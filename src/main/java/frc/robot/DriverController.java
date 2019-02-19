@@ -30,7 +30,7 @@ public class DriverController {
         return xbox1.getAButton();
     }
 
-    public boolean getDefense() {
+    public static boolean getDefense() {
         return xbox1.getYButton();
     }
 
