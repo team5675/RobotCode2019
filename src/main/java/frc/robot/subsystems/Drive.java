@@ -8,6 +8,8 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
+import edu.wpi.first.wpilibj.I2C.Port;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import frc.robot.config.driveTalonConfig;
 
@@ -19,6 +21,11 @@ public class Drive {
 
     static MecanumDrive chassis = new MecanumDrive(m_frontLeft, m_backLeft, m_frontRight, m_backRight);
 
+    //AHRS gyro = new AHRS(Port.kMXP);
+
+    double currentPosition = 0;
+    double degreeIncrease = 0.01;
+
     public void config(){
         driveTalonConfig.configDrive(m_frontLeft);
         driveTalonConfig.configDrive(m_frontRight);
@@ -27,6 +34,10 @@ public class Drive {
     }
     
     public void move(double x, double y, double z) {
+      //  currentPosition = currentPosition + degreeIncrease * z;
+        
+       // System.out.println(gyro.getYaw());
+        //System.out.println(gyro.getPitch());
         chassis.driveCartesian(x, y, z);
     }
 }

@@ -9,24 +9,34 @@ package frc.robot.auto;
 
 import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.Vision;
+
+import com.kauailabs.navx.frc.AHRS;
+
 import frc.robot.DriverController;
+import edu.wpi.first.wpilibj.SerialPort;
 
 public class LineUp {
 
     Drive drive = new Drive();
     DriverController driverController = new DriverController();
     Vision vision = new Vision();
+    
+    AHRS gyro = new AHRS(SerialPort.Port.kMXP);
+
+    public void config() {
+        gyro.reset();
+    }
 
     public void run(){
         double[] centerXReport = vision.runFrontVisionCenterX();
-        //double x = (centerXReport[0] + ((centerXReport[1] - centerXReport[0])/2) - 320)/320; //Center between vision targets
-        double centerX =((centerXReport[0] + centerXReport[1])/ 2);
-        double x = ((centerX - 320) / 320);
 
-        System.out.println("1 " + centerXReport[0]);
-        System.out.println("2 " + centerXReport[1]);
-        //System.out.println("X: " + x );
-        //drive.move(x * 1.7, driverController.getForward(), 0); //i forgot what side is rotate and im to lazy to look it up
+        double midpoint = (centerXReport[0] + centerXReport[1]) / 2;
+        double c = (midpoint - 320) / 320;
+
+        double g = (30 - gyro.getAngle()) * -0.03;
+        System.out.println("Speed: " + g);
+        System.out.println("Gyro: " + gyro.getAngle());
+        drive.move(c * -1.2, driverController.getForward(), g); //i forgot what side is rotate and im to lazy to look it up
         //doing * 2 kind of like a nitrous boost
     }
 }
