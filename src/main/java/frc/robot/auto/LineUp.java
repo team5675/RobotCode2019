@@ -11,6 +11,9 @@ import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.Vision;
 
 import frc.robot.DriverController;
+
+import com.kauailabs.navx.frc.AHRS;
+
 import edu.wpi.first.wpilibj.SerialPort;
 
 public class LineUp {
