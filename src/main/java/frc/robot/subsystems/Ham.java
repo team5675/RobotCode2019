@@ -34,7 +34,6 @@ public class Ham {
 
         ham2.follow(ham1);
 
-<<<<<<< HEAD
         System.out.println(HAMLimit.get());
 
         while (controller.getClimb3A() && controller.getClimb3B()) {
@@ -82,18 +81,5 @@ public class Ham {
 
         ham1.set(ControlMode.PercentOutput, 0);
         hamSlide.set(0);
-=======
-        if (controller.getClimb3A() && controller.getClimb3B()) {
-            while (HAMLimit.get() == false){
-                ham1.set(ControlMode.PercentOutput, -0.5);
-            }
-        } else if (controller.getHamRetract()) {
-            ham1.set(1);
-        } else {
-            ham1.set(ControlMode.PercentOutput, 0);
-        }
-
-       pullPork.set(DriverController.getElevator());
->>>>>>> a2c5a89005e086e82cad5776bab202c07f839260
     } 
 }
