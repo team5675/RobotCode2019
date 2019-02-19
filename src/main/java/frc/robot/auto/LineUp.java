@@ -23,7 +23,7 @@ public class LineUp {
         
         double x = (((centerXReport[0] + centerXReport[1]) / 2) - 320) / 320;
 
-        drive.move(x * -1, driverController.getForward(), 0);
+        drive.move(x * -1.2, driverController.getForward(), 0);
 
         System.out.println(x);
     }

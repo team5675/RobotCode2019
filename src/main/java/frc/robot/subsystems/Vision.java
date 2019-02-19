@@ -20,12 +20,9 @@ public class Vision {
 
     public double[] runFrontVisionCenterX() {
 
-        double[] centerX = {0, 0};
-        centerX = centerXData.getDoubleArray(new double[0]);
+        double[] centerX = centerXData.getDoubleArray(new double[0]);
+        
         double[] returnValue = {centerX[0], centerX[1]};
-
-        
-        
 
         return returnValue;
     }
