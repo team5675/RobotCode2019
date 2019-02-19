@@ -11,12 +11,19 @@ import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.Vision;
 
 import frc.robot.DriverController;
+import edu.wpi.first.wpilibj.SerialPort;
 
 public class LineUp {
 
     Drive drive = new Drive();
     DriverController driverController = new DriverController();
     Vision vision = new Vision();
+    
+    AHRS gyro = new AHRS(SerialPort.Port.kMXP);
+
+    public void config() {
+        gyro.reset();
+    }
 
     public void run(){
         double[] centerXReport = vision.runFrontVisionCenterX();
