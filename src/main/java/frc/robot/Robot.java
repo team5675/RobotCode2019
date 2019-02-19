@@ -21,7 +21,6 @@ import frc.robot.subsystems.Ham;
 
 
 public class Robot extends TimedRobot {
-
   LineUp lineUp = new LineUp();
   Drive drive = new Drive();
   DriverController driverController = new DriverController();
@@ -33,7 +32,6 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
-
     elevator.config();
     drive.config();
 
@@ -50,21 +48,17 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousPeriodic() {
-
     teleopPeriodic();
   }
   
   @Override
   public void teleopPeriodic() {
-
     //Checks to see if robot is lining up with vision, if not, update drive train from controls
     if (driverController.lineUp()){
-
       lineUp.run();
     } 
 
     else {
-
       //drive.move(0, 0.1, 0);
       drive.move(driverController.getStrafe(), driverController.getForward(), driverController.getRotation());
     }

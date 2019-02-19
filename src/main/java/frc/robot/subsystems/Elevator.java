@@ -4,7 +4,7 @@ import com.ctre.phoenix.motorcontrol.can.*;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
-import frc.robot.talonConfig.*;
+import frc.robot.config.*;
 import frc.robot.DriverController;;
 
 
@@ -52,7 +52,11 @@ public class Elevator {
           masterFourbar.setSelectedSensorPosition(0, Constants.kPIDLoopIdx, Constants.kTimeoutMs);
         }
 
+<<<<<<< HEAD
         //System.out.println(masterFourbar.getSelectedSensorPosition(0));
+=======
+        //System.out.println(masterFourbar.getSelectedSensorPosition());
+>>>>>>> a2c5a89005e086e82cad5776bab202c07f839260
     }
 
     public void config(){

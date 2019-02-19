@@ -1,4 +1,4 @@
-package frc.robot.talonConfig;
+package frc.robot.config;
 
 public class Constants{
 

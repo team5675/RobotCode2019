@@ -26,7 +26,7 @@ public class LineUp {
         System.out.println("1 " + centerXReport[0]);
         System.out.println("2 " + centerXReport[1]);
         //System.out.println("X: " + x );
-        //drive.move(x * .7, driverController.getForward(), 0); //i forgot what side is rotate and im to lazy to look it up
+        //drive.move(x * 1.7, driverController.getForward(), 0); //i forgot what side is rotate and im to lazy to look it up
         //doing * 2 kind of like a nitrous boost
     }
 }
