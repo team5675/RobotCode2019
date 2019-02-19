@@ -18,6 +18,8 @@ import frc.robot.DriverController;
 
 public class Ham {
 
+    Drive drive = new Drive();
+
     DigitalInput HAMLimit = new DigitalInput(9);
     DigitalInput HAMLimit2 = new DigitalInput(7);
     DigitalInput HAMSlideLimit = new DigitalInput(8);
@@ -29,21 +31,22 @@ public class Ham {
 
     Spark hamSlide = new Spark(8);
 
+    boolean isDone = false;
+
 
     public void Climb(){
 
         ham2.follow(ham1);
 
-        System.out.println(HAMLimit.get());
 
-        while (controller.getClimb3A() && controller.getClimb3B()) {
+        while (controller.getClimb3A() && controller.getClimb3B() && !isDone) {
 
             //DriverController.xbox1.setRumble(RumbleType.kLeftRumble, .5);
             //DriverController.xbox2.setRumble(RumbleType.kRightRumble, .5);
 
-            if (!HAMLimit.get() && (!HAMSlideLimit.get())){
+            if (!HAMLimit.get() && !HAMSlideLimit.get()){
 
-                ham1.set(ControlMode.PercentOutput, -.5);
+                ham1.set(ControlMode.PercentOutput, -.75);
             }
 
             if (HAMLimit.get()) {
@@ -52,7 +55,9 @@ public class Ham {
 
                 if (!HAMSlideLimit.get()){
 
-                    //hamSlide.set(1);
+                    hamSlide.set(.5     );
+
+                    drive.move(0, .25, 0);
 
                     ham1.set(ControlMode.PercentOutput, 0);
                 }
@@ -61,7 +66,7 @@ public class Ham {
                     
                     hamSlide.set(0); 
                     
-                    ham1.set(ControlMode.PercentOutput, .5);
+                    ham1.set(ControlMode.PercentOutput, 1);
                 } 
             }
 
@@ -69,12 +74,16 @@ public class Ham {
  
                     if (!HAMLimit2.get()) {
 
-                        ham1.set(ControlMode.PercentOutput, .5);
+                        ham1.set(ControlMode.PercentOutput, .75);
                     }
 
                     if (HAMLimit2.get()) { 
 
                         ham1.set(ControlMode.PercentOutput, 0);
+
+                        isDone = true;
+
+                        break;
                     }
             }
         }

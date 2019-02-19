@@ -11,6 +11,7 @@ import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 
+
 public class Vision {
     NetworkTableInstance inst = NetworkTableInstance.getDefault();
     NetworkTable table = inst.getTable("/GRIP/visionReport");
@@ -18,9 +19,10 @@ public class Vision {
     NetworkTableEntry areaData = table.getEntry("area");
 
     public double[] runFrontVisionCenterX() {
-        double[] centerX = centerXData.getDoubleArray(new double[0]);
-        double[] area = areaData.getDoubleArray(new double[0]);
-        double[] returnValue = {0, 0};
+
+        double[] centerX = {0, 0};
+        centerX = centerXData.getDoubleArray(new double[0]);
+        double[] returnValue = {centerX[0], centerX[1]};
 
         
         
@@ -28,3 +30,4 @@ public class Vision {
         return returnValue;
     }
 }
+
