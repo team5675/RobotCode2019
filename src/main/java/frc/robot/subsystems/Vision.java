@@ -13,18 +13,24 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 
 
 public class Vision {
+    
     NetworkTableInstance inst = NetworkTableInstance.getDefault();
     NetworkTable table = inst.getTable("/GRIP/visionReport");
     NetworkTableEntry centerXData = table.getEntry("centerX");
     NetworkTableEntry areaData = table.getEntry("area");
 
-    public double[] runFrontVisionCenterX() {
+    public double CenterX() {
 
-        double[] centerX = centerXData.getDoubleArray(new double[0]);
-        
-        double[] returnValue = {centerX[0], centerX[1]};
+        double centerX = table.getEntry("centerX").getDouble(0);
 
-        return returnValue;
+        return centerX;
+    }
+
+    public double avgArea() {
+
+        double avgArea = table.getEntry("avgArea").getDouble(0);
+
+        return avgArea;
     }
 }
 
