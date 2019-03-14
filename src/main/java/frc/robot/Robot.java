@@ -34,7 +34,6 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     elevator.config();
     drive.config();
-    lineUp.config();
 
     light.set(-0.85); //Update the color of the epic LEDs (tells when the robot is done loading)
   }
