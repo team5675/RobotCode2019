@@ -42,11 +42,11 @@ public class DriverController {
         return xbox1.getRawButton(8);
     }
 
-    public boolean getHatchUp() {
+    public boolean getGroundHatch() {
         return xbox2.getBumper(Hand.kLeft);
     }
 
-    public boolean getHatchDown() {
+    public boolean getHatchRelease() {
         return xbox2.getBumper(Hand.kRight); 
     }
 
@@ -58,11 +58,11 @@ public class DriverController {
         return xbox2.getTriggerAxis(Hand.kRight);
     }
 
-    public static double getElevator() {
-        return -(xbox2.getRawAxis(1));
+    public double getElevator() {
+        return (xbox2.getRawAxis(1));
     }
 
-    public static double get4Bar() {
+    public double get4Bar() {
         return xbox2.getRawAxis(5);
     }
 

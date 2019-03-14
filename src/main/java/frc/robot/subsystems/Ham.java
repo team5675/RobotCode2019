@@ -41,8 +41,8 @@ public class Ham {
 
         while (controller.getClimb3A() && controller.getClimb3B() && !isDone) {
 
-            //DriverController.xbox1.setRumble(RumbleType.kLeftRumble, .5);
-            //DriverController.xbox2.setRumble(RumbleType.kRightRumble, .5);
+            DriverController.xbox1.setRumble(RumbleType.kLeftRumble, .5);
+            DriverController.xbox2.setRumble(RumbleType.kRightRumble, .5);
 
             if (!HAMLimit.get() && !HAMSlideLimit.get()){
 
@@ -55,9 +55,9 @@ public class Ham {
 
                 if (!HAMSlideLimit.get()){
 
-                    hamSlide.set(.5     );
+                    hamSlide.set(1);
 
-                    drive.move(0, .25, 0);
+                    drive.move(0, .50, 0);
 
                     ham1.set(ControlMode.PercentOutput, 0);
                 }
@@ -66,7 +66,7 @@ public class Ham {
                     
                     hamSlide.set(0); 
                     
-                    ham1.set(ControlMode.PercentOutput, 1);
+                    ham1.set(ControlMode.PercentOutput, .75);
                 } 
             }
 
