@@ -15,7 +15,7 @@ import frc.robot.DriverController;
 public class Jeff {
 
     Spark cargo = new Spark(7); //wheel motor
-    Spark hatch = new Spark(8); //hatch motor
+    //Spark hatch = new Spark(8); //hatch motor
 
     DriverController controller = new DriverController();
     DigitalInput cargoSwitch = new DigitalInput(6);
@@ -27,7 +27,6 @@ public class Jeff {
     public void run(){
 
         setSpeed();
-        hatchGround();
     }
 
 
@@ -45,24 +44,5 @@ public class Jeff {
 
         cargo.set(jeffSpeed);
         
-    }
-
-    public void hatchGround() {
-
-        if (controller.getGroundHatch()){
-
-            accumManualHatch += 1;
-
-            if(accumManualHatch == 1) {
-
-                hatch.set(-1);
-            }
-
-            if (accumManualHatch > 1) {
-
-                accumManualHatch = 0;
-                hatch.set(1);
-            }
-        }
     }
 }

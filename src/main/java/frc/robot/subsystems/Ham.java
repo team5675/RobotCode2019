@@ -15,10 +15,12 @@ import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.Spark;
 
 import frc.robot.DriverController;
+import frc.robot.subsystems.Elevator;
 
 public class Ham {
 
     Drive drive = new Drive();
+    Elevator elevator = new Elevator();
 
     DigitalInput HAMLimit = new DigitalInput(9);
     DigitalInput HAMLimit2 = new DigitalInput(7);
@@ -38,11 +40,30 @@ public class Ham {
 
         ham2.follow(ham1);
 
+        if (controller.getCargo1()) {
+            if (!HAMLimit.get()){
+                ham1.set(ControlMode.PercentOutput, -1);
+            }
+        } else if (controller.getCargo2()) {
+            if (!HAMLimit2.get()) {
+                ham1.set(ControlMode.PercentOutput, 1);
+            }
+        } else if (controller.getCargo3()) {
 
+                hamSlide.set(1);
+                drive.move(controller.getForward(),0 , 0);
+
+        } else {
+                ham1.set(ControlMode.PercentOutput, 0);
+                hamSlide.set(0);
+        }
+/*
         while (controller.getClimb3A() && controller.getClimb3B() && !isDone) {
 
-            DriverController.xbox1.setRumble(RumbleType.kLeftRumble, .5);
-            DriverController.xbox2.setRumble(RumbleType.kRightRumble, .5);
+            //elevator.masterFourbar.set(ControlMode.PercentOutput, controller.get4Bar());
+
+            //DriverController.xbox1.setRumble(RumbleType.kLeftRumble, .5);
+            //DriverController.xbox2.setRumble(RumbleType.kRightRumble, .5);
 
             if (!HAMLimit.get() && !HAMSlideLimit.get()){
 
@@ -57,7 +78,7 @@ public class Ham {
 
                     hamSlide.set(1);
 
-                    drive.move(0, .50, 0);
+                    drive.move(0, -.01, 0);
 
                     ham1.set(ControlMode.PercentOutput, 0);
                 }
@@ -87,8 +108,6 @@ public class Ham {
                     }
             }
         }
-
-        ham1.set(ControlMode.PercentOutput, 0);
-        hamSlide.set(0);
+*/
     } 
 }

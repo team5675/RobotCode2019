@@ -37,8 +37,8 @@ public class Elevator {
 
     public void goToHeight(){
 
-        masterElevator.set(ControlMode.Position, controller.getElevator() * .1);
-        masterFourbar.set(ControlMode.Position, controller.get4Bar() * .1);
+        masterElevator.set(ControlMode.PercentOutput, controller.getElevator());
+        masterFourbar.set(ControlMode.PercentOutput, controller.get4Bar());
       }
 
     public void hatchRelease() {

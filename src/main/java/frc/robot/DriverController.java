@@ -59,38 +59,26 @@ public class DriverController {
     }
 
     public double getElevator() {
-        return (xbox2.getRawAxis(1));
+        return (xbox2.getRawAxis(1) * -1);
     }
 
     public double get4Bar() {
-        return xbox2.getRawAxis(5);
+        return (xbox2.getRawAxis(5) * -1);
     }
 
-    public static boolean getCargo1() {
+    public boolean getCargo1() {
 
-        if (xbox2.getAButton()) {
-            return true;
-        }
-
-        else { return false;}
+        return xbox2.getAButton();
     }
 
-    public static boolean getCargo2() {
+    public boolean getCargo2() {
     
-        if (xbox2.getBButton()) {
-            return true;
-        }
-
-        else { return false;}
+        return (xbox2.getBButton());
     }
 
-    public static boolean getCargo3() {
+    public boolean getCargo3() {
      
-        if (xbox2.getYButton()) {
-            return true;
-        }
-
-        else { return false;}
+        return (xbox2.getYButton());
     }
 
     public static boolean manualMode() {
