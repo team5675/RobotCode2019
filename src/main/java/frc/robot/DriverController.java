@@ -14,6 +14,7 @@ public class DriverController {
     public static XboxController xbox1 = new XboxController(0); //main driver
     public static XboxController xbox2 = new XboxController(1); //aux driver
 
+    //Chassis controls
     public double getForward() {
         return xbox1.getRawAxis(1);
     }
@@ -30,10 +31,7 @@ public class DriverController {
         return xbox1.getAButton();
     }
 
-    public static boolean getDefense() {
-        return xbox1.getYButton();
-    }
-
+    //HAM controls
     public boolean getHAMForward() {
         return xbox1.getBumper(Hand.kLeft);
     }
@@ -50,6 +48,7 @@ public class DriverController {
         return xbox2.getBumper(Hand.kRight); 
     }
 
+    //JEFF controls
     public double getCargoIntake() {
         return xbox2.getTriggerAxis(Hand.kLeft);
     }
@@ -58,7 +57,7 @@ public class DriverController {
         return xbox2.getTriggerAxis(Hand.kRight);
     }
 
-
+    //Elevator controls
     public static double getElevator() {
         return xbox2.getRawAxis(5);
     }
@@ -69,50 +68,5 @@ public class DriverController {
 
     public static boolean getElevatorOverride() {
         return xbox2.getAButton();
-    }
-
-    public boolean getCargo2() {
-    
-        return (xbox2.getBButton());
-    }
-
-    public boolean getCargo3() {
-     
-        return (xbox2.getYButton());
-    }
-
-    public static boolean manualMode() {
-        return xbox2.getXButtonPressed();
-    }
-
-    public static boolean getHatch1() {
-
-        if (xbox2.getRawAxis(7) == 1) {
-            return true;
-        }
-
-        else {return false;}
-    }
-
-    public static boolean getHatch2() {
-        
-        if (xbox2.getRawAxis(6) == -1) {
-            return true;
-        }
-
-        else {return false;}
-    }
-
-    public static boolean getHatch3() {
-        
-        if (xbox2.getRawAxis(7) == -1) {
-            return true;
-        }
-
-        else {return false;}
-    }
-
-    public boolean getHamRetract() {
-        return xbox2.getBackButton();
     }
 }

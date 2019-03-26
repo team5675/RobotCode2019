@@ -15,45 +15,54 @@ public class Elevator {
 
   public WPI_TalonSRX masterElevator = new WPI_TalonSRX(5);
   public WPI_TalonSRX masterFourbar = new WPI_TalonSRX(6);
-  Spark leftMotor = new Spark(0);
+  //Spark leftMotor = new Spark(0);
 
   //CONSTANTS
   int ELEVATOR_TOP_LIMIT = -1471810;
-  int JEFF_TOP_LIMIT = 0;
+  int FOURBAR_TOP_LIMIT = 0;
 
   public void config() {
     masterElevator.setSelectedSensorPosition(0);
   }
 
   public void loop(){
-    System.out.println(masterElevator.getSelectedSensorPosition());
     if (!DriverController.getElevatorOverride()) {
+      //Elevator limits
       if (masterElevator.getSelectedSensorPosition() > 0) {
         if (DriverController.getElevator() < 0) {
           masterElevator.set(ControlMode.PercentOutput, DriverController.getElevator());
-          leftMotor.set(DriverController.getElevator());
          } else {
           masterElevator.set(ControlMode.PercentOutput, 0);
-          leftMotor.set(0);
          }
       } else if (masterElevator.getSelectedSensorPosition() < ELEVATOR_TOP_LIMIT) {
         if (DriverController.getElevator() > 0) {
-          System.out.println("down");
           masterElevator.set(ControlMode.PercentOutput, DriverController.getElevator());
-          leftMotor.set(DriverController.getElevator());
         } else {
           masterElevator.set(ControlMode.PercentOutput, 0);
-          leftMotor.set(0);
         }
       } else {
         masterElevator.set(ControlMode.PercentOutput, DriverController.getElevator());
-        leftMotor.set(DriverController.getElevator());
+      }
+
+      //4 Bar limits
+      if (masterElevator.getSelectedSensorPosition() > 0) {
+        if (DriverController.get4Bar() < 0) {
+          masterFourbar.set(ControlMode.PercentOutput, DriverController.get4Bar());
+         } else {
+          masterFourbar.set(ControlMode.PercentOutput, 0);
+         }
+      } else if (masterFourbar.getSelectedSensorPosition() < FOURBAR_TOP_LIMIT) {
+        if (DriverController.get4Bar() > 0) {
+          masterFourbar.set(ControlMode.PercentOutput, DriverController.get4Bar());
+        } else {
+          masterFourbar.set(ControlMode.PercentOutput, 0);
+        }
+      } else {
+        masterElevator.set(ControlMode.PercentOutput, DriverController.get4Bar());
       }
     } else {
       masterElevator.set(ControlMode.PercentOutput, DriverController.getElevator());
-      leftMotor.set(DriverController.getElevator());
+      masterFourbar.set(ControlMode.PercentOutput, DriverController.get4Bar());
     }
-    masterFourbar.set(ControlMode.PercentOutput, DriverController.get4Bar());
-    System.out.println(masterElevator.getSelectedSensorPosition());
   }
 }
