@@ -17,7 +17,7 @@ public class LineUp {
     public void run(){
 
         //double centerXReport = server.centerX;
-        double areaReport = vision.avgArea();
+        //double areaReport = vision.avgArea();
         
         //x = ((centerXReport - 120) / 120) * -.6;
         //double theta = Math.atan(centerXReport / areaReport);

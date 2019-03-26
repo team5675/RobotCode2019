@@ -11,7 +11,6 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.Spark;
 
 import frc.robot.DriverController;
@@ -43,6 +42,8 @@ public class Ham {
 
                 ham1.set(ControlMode.PercentOutput, .4);
             }
+
+            else { ham1.set(ControlMode.PercentOutput, 0); }
         }
 
         else if (controller.getHAMUp()) {
@@ -51,6 +52,8 @@ public class Ham {
 
                 ham1.set(ControlMode.PercentOutput, -.4);
             }
+
+            else { ham1.set(ControlMode.PercentOutput, 0); }
         }
 
         else {ham1.set(ControlMode.PercentOutput, 0);}
