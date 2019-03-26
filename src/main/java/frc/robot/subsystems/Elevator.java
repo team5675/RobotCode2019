@@ -40,14 +40,4 @@ public class Elevator {
         masterElevator.set(ControlMode.PercentOutput, controller.getElevator());
         masterFourbar.set(ControlMode.PercentOutput, controller.get4Bar());
       }
-
-    public void hatchRelease() {
-
-      hatchReleaseHeight = masterFourbar.getSelectedSensorPosition() - HATCH_RELEASE_CONSTANT;
-
-      if (controller.getHatchRelease()) {
-
-        masterFourbar.set(ControlMode.Position, hatchReleaseHeight);
-      }
-    }
 }
