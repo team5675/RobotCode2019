@@ -32,9 +32,8 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
-    elevator.config();
     drive.config();
-    lineUp.config();
+    elevator.config();
 
     light.set(-0.85); //Update the color of the epic LEDs (tells when the robot is done loading)
   }
@@ -49,6 +48,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousPeriodic() {
+
     teleopPeriodic();
   }
   
@@ -67,14 +67,12 @@ public class Robot extends TimedRobot {
     //Cargo & hatch control
     jeff.run();
 
-    //elevator controls
-    elevator.run();
-
     //ham controls
     ham.Climb();
 
     //Loops
     dashboard.loop();
+    elevator.loop();
   }
 
   

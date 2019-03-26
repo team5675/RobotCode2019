@@ -11,84 +11,63 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.Spark;
 
 import frc.robot.DriverController;
+import frc.robot.subsystems.Elevator;
 
 public class Ham {
 
     Drive drive = new Drive();
+    Elevator elevator = new Elevator();
 
-    DigitalInput HAMLimit = new DigitalInput(9);
-    DigitalInput HAMLimit2 = new DigitalInput(7);
-    DigitalInput HAMSlideLimit = new DigitalInput(8);
+    DigitalInput HAMDownLimit = new DigitalInput(9);
+    DigitalInput HAMUpLimit = new DigitalInput(7);
 
     DriverController controller = new DriverController();
 
     WPI_VictorSPX ham1 = new WPI_VictorSPX(10);
     WPI_VictorSPX ham2 = new WPI_VictorSPX(11);
 
-    Spark hamSlide = new Spark(8);
-
-    boolean isDone = false;
+    Spark hamFootDrive = new Spark(8);
 
 
     public void Climb(){
 
         ham2.follow(ham1);
 
+        if (controller.getHAMDown()){
 
-        while (controller.getClimb3A() && controller.getClimb3B() && !isDone) {
+            if (!HAMDownLimit.get()){
 
-            //DriverController.xbox1.setRumble(RumbleType.kLeftRumble, .5);
-            //DriverController.xbox2.setRumble(RumbleType.kRightRumble, .5);
-
-            if (!HAMLimit.get() && !HAMSlideLimit.get()){
-
-                ham1.set(ControlMode.PercentOutput, -.75);
+                ham1.set(ControlMode.PercentOutput, .4);
             }
 
-            if (HAMLimit.get()) {
-
-                ham1.set(ControlMode.PercentOutput, 0);
-
-                if (!HAMSlideLimit.get()){
-
-                    hamSlide.set(.5     );
-
-                    drive.move(0, .25, 0);
-
-                    ham1.set(ControlMode.PercentOutput, 0);
-                }
-
-                if (HAMSlideLimit.get()){
-                    
-                    hamSlide.set(0); 
-                    
-                    ham1.set(ControlMode.PercentOutput, 1);
-                } 
-            }
-
-            if (HAMSlideLimit.get()) {
- 
-                    if (!HAMLimit2.get()) {
-
-                        ham1.set(ControlMode.PercentOutput, .75);
-                    }
-
-                    if (HAMLimit2.get()) { 
-
-                        ham1.set(ControlMode.PercentOutput, 0);
-
-                        isDone = true;
-
-                        break;
-                    }
-            }
+            else { ham1.set(ControlMode.PercentOutput, 0); }
         }
 
-        ham1.set(ControlMode.PercentOutput, 0);
-        hamSlide.set(0);
+        else if (controller.getHAMUp()) {
+
+            if (!HAMUpLimit.get()){
+
+                ham1.set(ControlMode.PercentOutput, -.4);
+            }
+
+            else { ham1.set(ControlMode.PercentOutput, 0); }
+        }
+
+        else {ham1.set(ControlMode.PercentOutput, 0);}
+
+        if (controller.getHAMForward()) {
+
+            hamFootDrive.set(.4);
+        }
+
+        else if (controller.getHAMBackwards()) {
+
+            hamFootDrive.set(-.4);
+        }
+
+        else {hamFootDrive.set(0);}
     } 
 }
