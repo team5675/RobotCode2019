@@ -1,12 +1,11 @@
 package frc.robot.auto;
 
-import frc.robot.subsystems.Vision;
+import frc.robot.subsystems.*;
 import frc.robot.DriverController;
 
 
 public class LineUp {
 
-    Vision vision = new Vision();
     Drive drive = new Drive();
     DriverController driverController = new DriverController();
 

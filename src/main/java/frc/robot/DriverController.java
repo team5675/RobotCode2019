@@ -63,7 +63,7 @@ public class DriverController {
         return xbox2.getRawAxis(5);
     }
 
-    public double get4Bar() {
+    public static double get4Bar() {
         return (xbox2.getRawAxis(5) * -1);
     }
 
