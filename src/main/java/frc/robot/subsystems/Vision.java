@@ -16,10 +16,9 @@ public class Vision {
     NetworkTableInstance inst = NetworkTableInstance.getDefault();
     NetworkTable table = inst.getTable("visionReport");
     NetworkTableEntry centerXData = table.getEntry("centerX");
-    NetworkTableEntry areaData = table.getEntry("area");
 
     public double runFrontVisionCenterX() {
 
-        return 0;
+        return centerXData.getDouble(0);
     }
 }

@@ -19,5 +19,6 @@ public class LineUp {
 
     public void run(){
         double centerXReport = vision.runFrontVisionCenterX();
+        System.out.println(centerXReport);
     }
 }

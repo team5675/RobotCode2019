@@ -59,20 +59,15 @@ public class DriverController {
     }
 
     public static double getElevator() {
-        return -(xbox2.getRawAxis(1));
+        return xbox2.getRawAxis(5);
     }
 
     public static double get4Bar() {
         return xbox2.getRawAxis(5);
     }
 
-    public static boolean getCargo1() {
-
-        if (xbox2.getAButton()) {
-            return true;
-        }
-
-        else { return false;}
+    public static boolean getElevatorOverride() {
+        return xbox2.getAButton();
     }
 
     public static boolean getCargo2() {
