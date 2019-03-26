@@ -58,16 +58,16 @@ public class DriverController {
         return xbox2.getTriggerAxis(Hand.kRight);
     }
 
-    public double getElevator() {
-        return (xbox2.getRawAxis(1) * -1);
+
+    public static double getElevator() {
+        return xbox2.getRawAxis(5);
     }
 
     public double get4Bar() {
         return (xbox2.getRawAxis(5) * -1);
     }
 
-    public boolean getCargo1() {
-
+    public static boolean getElevatorOverride() {
         return xbox2.getAButton();
     }
 
