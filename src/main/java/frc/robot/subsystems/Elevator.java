@@ -6,7 +6,6 @@ import edu.wpi.first.wpilibj.Spark;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
-import frc.robot.config.*;
 import frc.robot.DriverController;;
 
 
@@ -32,12 +31,20 @@ public class Elevator {
       if (masterElevator.getSelectedSensorPosition() > 0) {
         if (DriverController.getElevator() < 0) {
           masterElevator.set(ControlMode.PercentOutput, DriverController.getElevator());
+<<<<<<< HEAD
          } else {
           masterElevator.set(ControlMode.PercentOutput, 0);
+=======
+          //leftMotor.set(DriverController.getElevator());
+         } else {
+          masterElevator.set(ControlMode.PercentOutput, 0);
+          //leftMotor.set(0);
+>>>>>>> 84723d948f9ba9ac0c148728dfcdbdfcfbd51ffc
          }
       } else if (masterElevator.getSelectedSensorPosition() < ELEVATOR_TOP_LIMIT) {
         if (DriverController.getElevator() > 0) {
           masterElevator.set(ControlMode.PercentOutput, DriverController.getElevator());
+<<<<<<< HEAD
         } else {
           masterElevator.set(ControlMode.PercentOutput, 0);
         }
@@ -64,6 +71,20 @@ public class Elevator {
     } else {
       masterElevator.set(ControlMode.PercentOutput, DriverController.getElevator());
       masterFourbar.set(ControlMode.PercentOutput, DriverController.get4Bar());
+=======
+          //leftMotor.set(DriverController.getElevator());
+        } else {
+          masterElevator.set(ControlMode.PercentOutput, 0);
+          //leftMotor.set(0);
+        }
+      } else {
+        masterElevator.set(ControlMode.PercentOutput, DriverController.getElevator());
+        //leftMotor.set(DriverController.getElevator());
+      }
+    } else {
+      masterElevator.set(ControlMode.PercentOutput, DriverController.getElevator());
+      //leftMotor.set(DriverController.getElevator());
+>>>>>>> 84723d948f9ba9ac0c148728dfcdbdfcfbd51ffc
     }
     System.out.println("Elevator: " + masterElevator.getSelectedSensorPosition() + "Fourbar: " + masterFourbar.getSelectedSensorPosition());
   }

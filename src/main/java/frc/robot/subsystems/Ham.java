@@ -40,7 +40,7 @@ public class Ham {
 
             if (!HAMDownLimit.get()){
 
-                ham1.set(ControlMode.PercentOutput, .4);
+                ham1.set(ControlMode.PercentOutput, .25);
             }
 
             else { ham1.set(ControlMode.PercentOutput, 0); }
@@ -50,7 +50,7 @@ public class Ham {
 
             if (!HAMUpLimit.get()){
 
-                ham1.set(ControlMode.PercentOutput, -.4);
+                ham1.set(ControlMode.PercentOutput, -.25);
             }
 
             else { ham1.set(ControlMode.PercentOutput, 0); }
@@ -60,12 +60,12 @@ public class Ham {
 
         if (controller.getHAMForward()) {
 
-            hamFootDrive.set(.4);
+            hamFootDrive.set(1);
         }
 
         else if (controller.getHAMBackwards()) {
 
-            hamFootDrive.set(-.4);
+            hamFootDrive.set(1);
         }
 
         else {hamFootDrive.set(0);}
