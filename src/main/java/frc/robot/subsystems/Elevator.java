@@ -23,6 +23,7 @@ public class Elevator {
 
   public void config() {
     masterElevator.setSelectedSensorPosition(0);
+    masterFourbar.setSelectedSensorPosition(0);
   }
 
   public void loop(){
@@ -64,5 +65,6 @@ public class Elevator {
       masterElevator.set(ControlMode.PercentOutput, DriverController.getElevator());
       masterFourbar.set(ControlMode.PercentOutput, DriverController.get4Bar());
     }
+    System.out.println("Elevator: " + masterElevator.getSelectedSensorPosition() + "Fourbar: " + masterFourbar.getSelectedSensorPosition());
   }
 }
