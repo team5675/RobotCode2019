@@ -9,7 +9,6 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Spark;
 import frc.robot.DriverController;
 
@@ -20,17 +19,14 @@ public class Jeff {
 
     DriverController controller = new DriverController();
     DigitalInput cargoSwitch = new DigitalInput(6);
-    Encoder hatchEncoder = new Encoder(13, 14);
 
     double jeffSpeed = 0;
 
-    final double HATCH_DOWN = 0; //encoder value for hatch all the way down
-    final double HATCH_UP = 0; //encoder value for hatch all the way up
+    int accumManualHatch = 0;
 
     public void run(){
 
         setSpeed();
-        hatchGround();
     }
 
 
@@ -48,30 +44,5 @@ public class Jeff {
 
         cargo.set(jeffSpeed);
         
-    }
-
-    public void hatchGround() {
-
-        if (controller.getHatchDown()) {
-
-            if (hatchEncoder.get() > HATCH_DOWN) {
-
-            //hatch.set(-1);
-            }
-
-            else { //hatch.set(0); 
-            }
-        }
-
-        if (controller.getHatchUp()) {
-
-            if (hatchEncoder.get() < HATCH_UP) {
-
-                //hatch.set(1);
-            }
-
-            else { //hatch.set(0); 
-            }
-        }
     }
 }

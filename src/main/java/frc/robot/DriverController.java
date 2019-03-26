@@ -34,19 +34,19 @@ public class DriverController {
         return xbox1.getYButton();
     }
 
-    public boolean getClimb3B() {
-        return xbox2.getRawButton(8);
+    public boolean getHAMForward() {
+        return xbox1.getBumper(Hand.kLeft);
     }
 
-    public boolean getClimb3A() {
-        return xbox1.getRawButton(8);
+    public boolean getHAMBackwards() {
+        return xbox1.getBumper(Hand.kRight);
     }
 
-    public boolean getHatchUp() {
+    public boolean getHAMDown() {
         return xbox2.getBumper(Hand.kLeft);
     }
 
-    public boolean getHatchDown() {
+    public boolean getHAMUp() {
         return xbox2.getBumper(Hand.kRight); 
     }
 
@@ -58,34 +58,27 @@ public class DriverController {
         return xbox2.getTriggerAxis(Hand.kRight);
     }
 
+
     public static double getElevator() {
         return xbox2.getRawAxis(5);
     }
 
-    public static double get4Bar() {
-        return xbox2.getRawAxis(5);
+    public double get4Bar() {
+        return (xbox2.getRawAxis(5) * -1);
     }
 
     public static boolean getElevatorOverride() {
         return xbox2.getAButton();
     }
 
-    public static boolean getCargo2() {
+    public boolean getCargo2() {
     
-        if (xbox2.getBButton()) {
-            return true;
-        }
-
-        else { return false;}
+        return (xbox2.getBButton());
     }
 
-    public static boolean getCargo3() {
+    public boolean getCargo3() {
      
-        if (xbox2.getYButton()) {
-            return true;
-        }
-
-        else { return false;}
+        return (xbox2.getYButton());
     }
 
     public static boolean manualMode() {
