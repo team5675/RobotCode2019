@@ -4,7 +4,7 @@ import com.ctre.phoenix.motorcontrol.can.*;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
-import frc.robot.talonConfig.*;
+import frc.robot.config.*;
 import frc.robot.DriverController;;
 
 
@@ -14,49 +14,45 @@ public class Elevator {
     public WPI_TalonSRX masterElevator = new WPI_TalonSRX(5);
     public WPI_TalonSRX masterFourbar = new WPI_TalonSRX(6);
 
+    final static double TOP_4BAR_LIMIT = 0;
+    final static double BOTTOM_4BAR_LIMIT = 0;
+
     //emperically measured encoder values here 
     //****4096 ticks is full encoder revolution****
     final static double kHatch1 = 0;
     final static double kHatch2 = 4096;
     final static double kHatch3 = 8192;
 
-    final static double kCargo1 = 20480;
-    final static double kCargo2 = 40960;
+    final static double kCargo1 = 122388;
+    final static double kCargo2 = 600000;
     final static double kCargo3 = 614400;
 
     final static double kFHatch1 = 100;
     final static double kFHatch2 = 200;
     final static double kFHatch3 = 300;
 
-    final static double kFCargo1 = 15;
+    final static double kFCargo1 = -6033;
     final static double kFCargo2 = 2500;
     final static double kFCargo3 = 35000;
 
-    double[] setElevator = {kHatch1, kHatch2, kHatch3, 
-        kCargo1, kCargo2, kCargo3};
-
-    double[] setFourbar = {kFHatch1, kFHatch2, kFHatch3,
-        kFCargo1, kFCargo2, kFCargo3};
-
-    boolean[] controllerSet = {DriverController.getHatch1(), 
-        DriverController.getHatch2(), DriverController.getHatch3(),
-        DriverController.getCargo1(),DriverController.getCargo2(), 
-        DriverController.getCargo3()};
 
     double eHeight = 0;
     double fHeight = 0;
 
-    int accumManual = 0;
-    boolean manualMode = false;
+    int accumManual = 1;
+    boolean manualMode = true;
 
     public void run(){
 
-        //setHeight();
+        setHeight();
         goToHeight();
 
+        if (DriverController.getDefense()) {
 
-        System.out.println(masterElevator.getSelectedSensorPosition());
-        System.out.println(DriverController.getCargo1());
+          masterFourbar.setSelectedSensorPosition(0, Constants.kPIDLoopIdx, Constants.kTimeoutMs);
+        }
+
+        //System.out.println(masterFourbar.getSelectedSensorPosition(0));
     }
 
     public void config(){
@@ -67,52 +63,41 @@ public class Elevator {
 
     public void setHeight(){
 
-        if (controllerSet[1]) {
+      if (DriverController.getCargo1()) {
 
-            eHeight = setElevator[1];
-            fHeight = setFourbar[1];
+        fHeight = kFCargo1;
+        eHeight = kCargo1;
         }
 
-        else if (controllerSet[2]) {
+      if (DriverController.getCargo2()) {
 
-            eHeight = setElevator[2];
-            fHeight = setFourbar[2];
-        }
+        fHeight = kFCargo2;
+        eHeight = kCargo2;
+      }
 
-        else if (controllerSet[3]) {
+      if (DriverController.getCargo3()) {
 
-            eHeight = setElevator[3];
-            fHeight = setFourbar[3];
-        }
+        fHeight = kFCargo3;
+        eHeight = kCargo3;
+      }
 
-        else if (controllerSet[4]) {
+      if (DriverController.getHatch1()) {
 
-            eHeight = setElevator[4];
-            fHeight = setFourbar[4];
-        }
+        fHeight = kFHatch1;
+        eHeight = kHatch1;
+      }
 
-        else if (controllerSet[5]) {
+      if (DriverController.getHatch2()) {
 
-            eHeight = setElevator[5];
-            fHeight = setFourbar[5];
-        }
+        fHeight = kFHatch2;
+        eHeight = kHatch2;
+      }
 
-        else {
+      if (DriverController.getHatch3()) {
 
-            eHeight = setElevator[0];
-            fHeight = setFourbar[0];
-        }
-
-       /* for (int i = 0; i < controllerSet.length; i++){
-
-            if (controllerSet[i] = true){
-
-                eHeight = setElevator[i];
-                fHeight = setFourbar[i];
-
-                break;
-            }
-        } */
+        fHeight = kFHatch3;
+        eHeight = kHatch3;
+      }
     }
 
 
@@ -132,14 +117,14 @@ public class Elevator {
 
       if (manualMode){
 
-        masterElevator.set(ControlMode.PercentOutput, DriverController.getElevator());
-        masterFourbar.set(ControlMode.PercentOutput, DriverController.get4Bar());
+          masterFourbar.set(ControlMode.PercentOutput, DriverController.get4Bar());
+          masterElevator.set(ControlMode.PercentOutput, DriverController.getElevator());
       }
 
       else{
 
-        masterElevator.set(ControlMode.MotionMagic, eHeight);
-        masterFourbar.set(ControlMode.MotionMagic, fHeight);
+        masterElevator.set(ControlMode.Position, eHeight);
+        masterFourbar.set(ControlMode.Position, fHeight);
       }
     }
 }

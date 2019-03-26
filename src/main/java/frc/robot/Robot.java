@@ -7,8 +7,6 @@
 
 package frc.robot;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
-
 import edu.wpi.first.wpilibj.TimedRobot;
 
 import frc.robot.DriverController;
@@ -23,7 +21,6 @@ import frc.robot.subsystems.Ham;
 
 
 public class Robot extends TimedRobot {
-
   LineUp lineUp = new LineUp();
   Drive drive = new Drive();
   DriverController driverController = new DriverController();
@@ -35,12 +32,11 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
-
     elevator.config();
     drive.config();
+    lineUp.config();
 
-    light.set(123); //Update the color of the epic LEDs (tells when the robot is done loading)
-    dashboard.init();
+    light.set(-0.85); //Update the color of the epic LEDs (tells when the robot is done loading)
   }
 
   @Override
@@ -53,21 +49,18 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousPeriodic() {
-
     teleopPeriodic();
   }
   
   @Override
   public void teleopPeriodic() {
-
     //Checks to see if robot is lining up with vision, if not, update drive train from controls
     if (driverController.lineUp()){
-
       lineUp.run();
     } 
 
     else {
-
+      //drive.move(0, 0.1, 0);
       drive.move(driverController.getStrafe(), driverController.getForward(), driverController.getRotation());
     }
 
@@ -79,6 +72,9 @@ public class Robot extends TimedRobot {
 
     //ham controls
     ham.Climb();
+
+    //Loops
+    dashboard.loop();
   }
 
   

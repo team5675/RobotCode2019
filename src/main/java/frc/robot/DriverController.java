@@ -30,16 +30,16 @@ public class DriverController {
         return xbox1.getAButton();
     }
 
-    public boolean getDefense() {
+    public static boolean getDefense() {
         return xbox1.getYButton();
     }
 
     public boolean getClimb3B() {
-        return xbox2.getStartButton();
+        return xbox2.getRawButton(8);
     }
 
     public boolean getClimb3A() {
-        return xbox1.getStartButton();
+        return xbox1.getRawButton(8);
     }
 
     public boolean getHatchUp() {
@@ -122,5 +122,9 @@ public class DriverController {
         }
 
         else {return false;}
+    }
+
+    public boolean getHamRetract() {
+        return xbox2.getBackButton();
     }
 }
