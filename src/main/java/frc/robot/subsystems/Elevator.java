@@ -26,7 +26,7 @@ public class Elevator {
 
   public void loop(){
     System.out.println(masterElevator.getSelectedSensorPosition());
-    if (!DriverController.getElevatorOverride()) {
+    if (false) {
       if (masterElevator.getSelectedSensorPosition() > 0) {
         if (DriverController.getElevator() < 0) {
           masterElevator.set(ControlMode.PercentOutput, DriverController.getElevator());

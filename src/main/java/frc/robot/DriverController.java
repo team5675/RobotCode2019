@@ -60,11 +60,11 @@ public class DriverController {
 
 
     public static double getElevator() {
-        return xbox2.getRawAxis(5);
+        return xbox2.getRawAxis(1);
     }
 
     public static double get4Bar() {
-        return (xbox2.getRawAxis(5) * -1);
+        return -(xbox2.getRawAxis(5) * -1);
     }
 
     public static boolean getElevatorOverride() {
