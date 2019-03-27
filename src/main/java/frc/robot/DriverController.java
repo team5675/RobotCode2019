@@ -59,11 +59,7 @@ public class DriverController {
 
     //Elevator controls
     public static double getElevator() {
-<<<<<<< HEAD
         return xbox2.getRawAxis(1);
-=======
-        return -xbox2.getRawAxis(5);
->>>>>>> 4d2043b7d29857ff69600c5af7ec0e01959f0007
     }
 
     public static double get4Bar() {

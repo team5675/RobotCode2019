@@ -2,8 +2,6 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.*;
 
-import edu.wpi.first.wpilibj.Spark;
-
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import frc.robot.DriverController;;
@@ -26,13 +24,8 @@ public class Elevator {
   }
 
   public void loop(){
-<<<<<<< HEAD
     System.out.println(masterElevator.getSelectedSensorPosition());
     if (false) {
-=======
-    if (!DriverController.getElevatorOverride()) {
-      //Elevator limits
->>>>>>> 4d2043b7d29857ff69600c5af7ec0e01959f0007
       if (masterElevator.getSelectedSensorPosition() > 0) {
         if (DriverController.getElevator() < 0) {
           masterElevator.set(ControlMode.PercentOutput, DriverController.getElevator());

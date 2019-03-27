@@ -7,11 +7,8 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
-import frc.robot.config.driveTalonConfig;
 
 public class Drive {
     /*static WPI_TalonSRX m_frontLeft = new WPI_TalonSRX(3);//Motor Controllers
