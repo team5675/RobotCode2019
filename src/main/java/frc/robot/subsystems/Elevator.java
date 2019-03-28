@@ -17,8 +17,8 @@ public class Elevator {
   //Spark leftMotor = new Spark(0);
 
   //CONSTANTS
-  int ELEVATOR_TOP_LIMIT = -1471810;
-  int FOURBAR_TOP_LIMIT = 0;
+  int ELEVATOR_TOP_LIMIT = 980000;
+  int FOURBAR_TOP_LIMIT = 5200;
 
   public void config() {
     masterElevator.setSelectedSensorPosition(0);
@@ -29,12 +29,12 @@ public class Elevator {
     if (!DriverController.getElevatorOverride()) {
       //Elevator limits
       if (masterElevator.getSelectedSensorPosition() > 0) {
-        if (DriverController.getElevator() < 0) {
+        if (DriverController.getElevator() > 0) {
           masterElevator.set(ControlMode.PercentOutput, DriverController.getElevator());
          } else {
           masterElevator.set(ControlMode.PercentOutput, 0);
          }
-      } else if (masterElevator.getSelectedSensorPosition() < ELEVATOR_TOP_LIMIT) {
+      } else if (masterElevator.getSelectedSensorPosition() <mn ELEVATOR_TOP_LIMIT) {
         if (DriverController.getElevator() > 0) {
           masterElevator.set(ControlMode.PercentOutput, DriverController.getElevator());
         } else {
