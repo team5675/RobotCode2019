@@ -17,7 +17,7 @@ public class Gyro {
         navX = new AHRS(Port.kMXP);
     }
 
-    void getRotation() {
-
+    public double getAngle() {
+        return navX.getAngle();
     }
 }
