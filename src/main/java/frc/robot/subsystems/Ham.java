@@ -40,7 +40,7 @@ public class Ham {
 
             if (!HAMDownLimit.get()){
 
-                ham1.set(ControlMode.PercentOutput, .25);
+                ham1.set(ControlMode.PercentOutput, .75);
             }
 
             else { ham1.set(ControlMode.PercentOutput, 0); }
@@ -50,7 +50,7 @@ public class Ham {
 
             if (!HAMUpLimit.get()){
 
-                ham1.set(ControlMode.PercentOutput, -.25);
+                ham1.set(ControlMode.PercentOutput, -.75);
             }
 
             else { ham1.set(ControlMode.PercentOutput, 0); }
