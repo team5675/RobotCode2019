@@ -32,7 +32,7 @@ public class Ham {
     Spark hamFootDrive = new Spark(8);
 
 
-    public void Climb(){
+    public void loop(){
 
         ham2.follow(ham1);
 

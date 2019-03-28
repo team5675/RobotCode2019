@@ -13,14 +13,17 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 
 
 public class Vision {
-    
-    NetworkTableInstance inst = NetworkTableInstance.getDefault();
-    NetworkTable table = inst.getTable("visionReport");
-    NetworkTableEntry centerXData = table.getEntry("centerX");
+    NetworkTableInstance inst;
+    NetworkTable table;
+    NetworkTableEntry centerXData;
 
+    public void config() {
+        inst = NetworkTableInstance.getDefault();
+        table = inst.getTable("visionReport");
+        centerXData = table.getEntry("centerX");
+    }
 
-    public double runFrontVisionCenterX() {
-
+    public double getCenterXData() {
         return centerXData.getDouble(0);
     }
 }

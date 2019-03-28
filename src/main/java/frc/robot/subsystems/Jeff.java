@@ -24,7 +24,7 @@ public class Jeff {
 
     int accumManualHatch = 0;
 
-    public void run(){
+    public void loop(){
 
         setSpeed();
     }
