@@ -16,11 +16,13 @@ import frc.robot.subsystems.Jeff;
 import frc.robot.subsystems.Light;
 import frc.robot.subsystems.Vision;
 import frc.robot.subsystems.Elevator;
+import frc.robot.subsystems.Gyro;
 import frc.robot.subsystems.Ham;
 
 
 public class Robot extends TimedRobot {
   Vision vision = new Vision();
+  Gyro gyro = new Gyro();
   LineUp lineUp = new LineUp();
   DriverController driverController = new DriverController();
   Dashboard dashboard = new Dashboard();
@@ -36,6 +38,8 @@ public class Robot extends TimedRobot {
     drive.config();
     elevator.config();
     vision.config();
+    lineUp.config();
+    gyro.config();
 
     light.set(-0.85); //Update the color of the epic LEDs (tells when the robot is done loading)
   }

@@ -17,4 +17,7 @@ public class Constants {
 	public static int ELEVATOR_BOTTOM_LIMIT = 0;
 	public static int FOURBAR_TOP_LIMIT = 5200;
 	public static int FOURBAR_BOTTOM_LIMIT = 0;
+
+	//AUTO LINE UP//
+	public static double P_GAIN = 0;
 }

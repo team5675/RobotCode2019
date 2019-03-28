@@ -20,12 +20,10 @@ public class Drive {
 
     MecanumDrive chassis = new MecanumDrive(m_frontLeft, m_backLeft, m_frontRight, m_backRight);
 
-    //AHRS gyro = new AHRS(Port.kMXP);
-
     double currentPosition = 0;
     double degreeIncrease = 0.01;
 
-    public void config(){
+    public void config() {
         driveTalonConfig.configDrive(m_frontLeft);
         driveTalonConfig.configDrive(m_frontRight);
         driveTalonConfig.configDrive(m_backLeft);
