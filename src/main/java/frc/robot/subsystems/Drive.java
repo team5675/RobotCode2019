@@ -28,6 +28,7 @@ public class Drive {
         driveTalonConfig.configDrive(m_frontRight);
         driveTalonConfig.configDrive(m_backLeft);
         driveTalonConfig.configDrive(m_backRight);
+        chassis.setSafetyEnabled(false);
     }
     
     public void move(double x, double y, double z) {

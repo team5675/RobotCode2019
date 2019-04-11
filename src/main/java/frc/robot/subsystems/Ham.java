@@ -19,7 +19,6 @@ import frc.robot.subsystems.Elevator;
 public class Ham {
 
     Drive drive = new Drive();
-    Elevator elevator = new Elevator();
 
     DigitalInput HAMDownLimit = new DigitalInput(9);
     DigitalInput HAMUpLimit = new DigitalInput(7);
@@ -29,7 +28,7 @@ public class Ham {
     WPI_VictorSPX ham1 = new WPI_VictorSPX(10);
     WPI_VictorSPX ham2 = new WPI_VictorSPX(11);
 
-    Spark hamFootDrive = new Spark(8);
+    // Spark hamFootDrive = new Spark(8);
 
 
     public void loop(){
@@ -60,14 +59,15 @@ public class Ham {
 
         if (controller.getHAMForward()) {
 
-            hamFootDrive.set(1);
+            //hamFootDrive.set(1);
         }
 
         else if (controller.getHAMBackwards()) {
 
-            hamFootDrive.set(1);
+            //hamFootDrive.set(1);
         }
 
-        else {hamFootDrive.set(0);}
+        else {//hamFootDrive.set(0);
+        }
     } 
 }

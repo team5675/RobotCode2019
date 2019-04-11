@@ -2,11 +2,16 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
+import edu.wpi.first.wpilibj.Spark;
 import frc.robot.config.Constants;
 
 import frc.robot.DriverController;
+import frc.robot.Dashboard;
 
 public class Elevator {
+  Dashboard dashboard = new Dashboard();
+
   public WPI_TalonSRX masterElevator = new WPI_TalonSRX(5);
   public WPI_TalonSRX masterFourbar = new WPI_TalonSRX(6);
 
@@ -28,14 +33,16 @@ public class Elevator {
 
   public void loop(){
     //Toggle override control
-    if (DriverController.getElevatorOverride() && !overrideActive) {
-      overrideActive = true;
-    } else if (!DriverController.getElevatorOverride() && overrideActive) {
-      overrideActive = false;
+    if (DriverController.getElevatorOverridePressed()) {
+      if (overrideActive) {
+        overrideActive = false;
+      } else {
+        overrideActive = true;
+      }
     }
 
     if (!overrideActive) {
-      if (masterElevator.getSelectedSensorPosition() < 0) { //if elevator below limit
+      if (masterElevator.getSelectedSensorPosition() < Constants.ELEVATOR_BOTTOM_LIMIT) { //if elevator below limit
         if (DriverController.getElevator() < 0) {
           masterElevator.set(ControlMode.PercentOutput, DriverController.getElevator());
         } else {
@@ -48,11 +55,18 @@ public class Elevator {
           masterElevator.set(ControlMode.PercentOutput, 0);
         }
       } else {
-        masterElevator.set(ControlMode.PercentOutput, DriverController.getElevator());
+        double speed = 1;
+
+        if (masterElevator.getSelectedSensorPosition() > Constants.ELEVATOR_TOP_LIMIT - Constants.ELEVATOR_SLOW_DOWN) {
+          speed = (Constants.ELEVATOR_TOP_LIMIT - masterElevator.getSelectedSensorPosition()) * Constants.ELEVATOR_P_GAIN;
+        }
+
+        masterElevator.set(ControlMode.PercentOutput, DriverController.getElevator() * speed);
       }
 
       //4 Bar limits
-      if (masterElevator.getSelectedSensorPosition() < 0) {
+      if (masterFourbar.getSelectedSensorPosition() < 0) {
+        //System.out.print("trigger");
         if (DriverController.get4Bar() < 0) {
           masterFourbar.set(ControlMode.PercentOutput, DriverController.get4Bar());
          } else {
@@ -65,12 +79,20 @@ public class Elevator {
           masterFourbar.set(ControlMode.PercentOutput, 0);
         }
       } else {
-        masterFourbar.set(ControlMode.PercentOutput, DriverController.get4Bar());
+        double speed = 1;
+
+        if (masterFourbar.getSelectedSensorPosition() > Constants.FOURBAR_TOP_LIMIT - Constants.FOURBAR_SLOW_DOWN) {
+          speed = (Constants.FOURBAR_TOP_LIMIT - masterFourbar.getSelectedSensorPosition()) * Constants.FOURBAR_P_GAIN;
+        }
+        
+        dashboard.setOutput1(speed);
+        masterFourbar.set(ControlMode.PercentOutput, DriverController.get4Bar() * speed);
       }
     } else {
       masterElevator.set(ControlMode.PercentOutput, DriverController.getElevator());
       masterFourbar.set(ControlMode.PercentOutput, DriverController.get4Bar());
-      System.out.println("Elevator: " + masterElevator.getSelectedSensorPosition() + " Fourbar: " + masterFourbar.getSelectedSensorPosition());
     }
+    dashboard.setElevatorEncoder(masterElevator.getSelectedSensorPosition());
+    dashboard.setFourbarEncoder(masterFourbar.getSelectedSensorPosition());
   }
 }

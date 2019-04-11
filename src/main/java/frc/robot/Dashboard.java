@@ -9,9 +9,25 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.subsystems.Gyro;
 
 public class Dashboard {
+    Gyro gyro = new Gyro();
+
     public void loop(){
         SmartDashboard.putNumber("voltage", RobotController.getBatteryVoltage());
+        SmartDashboard.putNumber("gyro", gyro.getAngle());
+    }
+
+    public void setElevatorEncoder(int ticks) {
+        SmartDashboard.putNumber("encoderElevator", ticks);
+    }
+
+    public void setFourbarEncoder(int ticks) {
+        SmartDashboard.putNumber("fourbarElevator", ticks);
+    }
+
+    public void setOutput1(double value) {
+        SmartDashboard.putNumber("output1", value);
     }
 }

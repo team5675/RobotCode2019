@@ -8,13 +8,14 @@
 package frc.robot.subsystems;
 
 import com.kauailabs.navx.frc.AHRS;
-import edu.wpi.first.wpilibj.SerialPort.Port;
+import edu.wpi.first.wpilibj.SPI.Port;
+
 
 public class Gyro {
-    AHRS navX;
+    AHRS navX = new AHRS(Port.kMXP);
 
     public void config() {
-        navX = new AHRS(Port.kMXP);
+        //navX = new AHRS(Port.kMXP);
     }
 
     public double getAngle() {

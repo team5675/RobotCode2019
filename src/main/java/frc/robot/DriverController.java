@@ -66,7 +66,11 @@ public class DriverController {
         return xbox2.getRawAxis(5);
     }
 
-    public static boolean getElevatorOverride() {
-        return xbox2.getAButton();
+    public static boolean getElevatorOverridePressed() {
+        return xbox2.getAButtonPressed();
+    }
+
+    public static boolean getElevatorOverrideReleased() {
+        return xbox2.getAButtonReleased();
     }
 }
