@@ -47,6 +47,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotPeriodic() {
+    dashboard.loop();
   }
 
 
@@ -71,7 +72,6 @@ public class Robot extends TimedRobot {
     }
 
     //Loops
-    dashboard.loop();
     elevator.loop();
     jeff.loop();
     ham.loop();

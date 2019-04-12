@@ -73,4 +73,12 @@ public class DriverController {
     public static boolean getElevatorOverrideReleased() {
         return xbox2.getAButtonReleased();
     }
+
+    public static boolean getElevatorStage0() {
+        return xbox2.getXButton();
+    }
+
+    public static boolean getElevatorStage1() {
+        return xbox2.getYButton();
+    }
 }

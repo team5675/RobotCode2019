@@ -35,8 +35,10 @@ public class Elevator {
     if (DriverController.getElevatorOverridePressed()) {
       if (overrideActive) {
         overrideActive = false;
+        dashboard.setManualModeOn(false);
       } else {
         overrideActive = true;
+        dashboard.setManualModeOn(true);
       }
     }
 
@@ -64,28 +66,38 @@ public class Elevator {
       }
 
       //4 Bar limits
-      if (masterFourbar.getSelectedSensorPosition() < 0) {
-        //System.out.print("trigger");
-        if (DriverController.get4Bar() < 0) {
-          masterFourbar.set(ControlMode.PercentOutput, DriverController.get4Bar());
-         } else {
-          masterFourbar.set(ControlMode.PercentOutput, 0);
-         }
-      } else if (masterFourbar.getSelectedSensorPosition() > Constants.FOURBAR_TOP_LIMIT) {
-        if (DriverController.get4Bar() > 0) {
-          masterFourbar.set(ControlMode.PercentOutput, DriverController.get4Bar());
+      if (!DriverController.getElevatorStage0() && !DriverController.getElevatorStage1()) {
+        if (masterFourbar.getSelectedSensorPosition() < 0) {
+          //System.out.print("trigger");
+          if (DriverController.get4Bar() < 0) {
+            masterFourbar.set(ControlMode.PercentOutput, DriverController.get4Bar());
+          } else {
+            masterFourbar.set(ControlMode.PercentOutput, 0);
+          }
+        } else if (masterFourbar.getSelectedSensorPosition() > Constants.FOURBAR_TOP_LIMIT) {
+          if (DriverController.get4Bar() > 0) {
+            masterFourbar.set(ControlMode.PercentOutput, DriverController.get4Bar());
+          } else {
+            masterFourbar.set(ControlMode.PercentOutput, 0);
+          }
         } else {
-          masterFourbar.set(ControlMode.PercentOutput, 0);
-        }
-      } else {
-        double speed = 1;
+          double speed = 1;
 
-        if (masterFourbar.getSelectedSensorPosition() > Constants.FOURBAR_TOP_LIMIT - Constants.FOURBAR_SLOW_DOWN) {
-          speed = (Constants.FOURBAR_TOP_LIMIT - masterFourbar.getSelectedSensorPosition()) * Constants.FOURBAR_P_GAIN;
+          if (masterFourbar.getSelectedSensorPosition() > Constants.FOURBAR_TOP_LIMIT - Constants.FOURBAR_SLOW_DOWN) {
+            speed = (Constants.FOURBAR_TOP_LIMIT - masterFourbar.getSelectedSensorPosition()) * Constants.FOURBAR_P_GAIN;
+          }
+          
+          masterFourbar.set(ControlMode.PercentOutput, DriverController.get4Bar() * speed);
         }
-        
+      } else if (DriverController.getElevatorStage1()) {
+        //masterFourbar.set(ControlMode.Position, 1100);
+        double speed = (1100 - masterFourbar.getSelectedSensorPosition()) * -0.001;
+        masterFourbar.set(ControlMode.PercentOutput, speed);
         dashboard.setOutput1(speed);
-        masterFourbar.set(ControlMode.PercentOutput, DriverController.get4Bar() * speed);
+      } else {
+        double speed = (500 - masterFourbar.getSelectedSensorPosition()) * -0.0007;
+        masterFourbar.set(ControlMode.PercentOutput, speed);
+        dashboard.setOutput1(speed);
       }
     } else {
       masterElevator.set(ControlMode.PercentOutput, DriverController.getElevator());

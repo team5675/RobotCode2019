@@ -15,8 +15,8 @@ public class Dashboard {
     Gyro gyro = new Gyro();
 
     public void loop(){
-        SmartDashboard.putNumber("voltage", RobotController.getBatteryVoltage());
-        SmartDashboard.putNumber("gyro", gyro.getAngle());
+        //SmartDashboard.putNumber("voltage", RobotController.getBatteryVoltage());
+        //SmartDashboard.putNumber("gyro", gyro.getAngle());
     }
 
     public void setElevatorEncoder(int ticks) {
@@ -29,5 +29,9 @@ public class Dashboard {
 
     public void setOutput1(double value) {
         SmartDashboard.putNumber("output1", value);
+    }
+
+    public void setManualModeOn(boolean value) {
+        SmartDashboard.putBoolean("manualMode", value);
     }
 }

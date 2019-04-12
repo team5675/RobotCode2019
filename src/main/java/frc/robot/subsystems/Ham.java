@@ -46,10 +46,10 @@ public class Ham {
         }
 
         else if (controller.getHAMUp()) {
-
+            ham1.set(ControlMode.PercentOutput, -.75);
             if (!HAMUpLimit.get()){
 
-                ham1.set(ControlMode.PercentOutput, -.75);
+                //ham1.set(ControlMode.PercentOutput, -.75);
             }
 
             else { ham1.set(ControlMode.PercentOutput, 0); }
