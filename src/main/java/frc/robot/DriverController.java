@@ -81,4 +81,8 @@ public class DriverController {
     public static boolean getElevatorStage1() {
         return xbox2.getYButton();
     }
+
+    public static boolean getFourbarEncoderReset() {
+        return xbox2.getRawButtonPressed(8);
+    }
 }

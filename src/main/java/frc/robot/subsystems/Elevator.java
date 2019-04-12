@@ -19,6 +19,8 @@ public class Elevator {
   public void config() {
     masterElevator.setSelectedSensorPosition(0);
     masterFourbar.setSelectedSensorPosition(0);
+
+    dashboard.setManualModeOn(false);
   }
 
   //-1 to motor controller makes it go up
@@ -40,6 +42,10 @@ public class Elevator {
         overrideActive = true;
         dashboard.setManualModeOn(true);
       }
+    }
+
+    if (DriverController.getFourbarEncoderReset()) {
+      masterFourbar.setSelectedSensorPosition(0);
     }
 
     if (!overrideActive) {
@@ -91,18 +97,21 @@ public class Elevator {
         }
       } else if (DriverController.getElevatorStage1()) {
         //masterFourbar.set(ControlMode.Position, 1100);
-        double speed = (1100 - masterFourbar.getSelectedSensorPosition()) * -0.001;
+        double speed = (1400 - masterFourbar.getSelectedSensorPosition()) * -0.0015;
         masterFourbar.set(ControlMode.PercentOutput, speed);
-        dashboard.setOutput1(speed);
       } else {
         double speed = (500 - masterFourbar.getSelectedSensorPosition()) * -0.0007;
         masterFourbar.set(ControlMode.PercentOutput, speed);
-        dashboard.setOutput1(speed);
       }
     } else {
       masterElevator.set(ControlMode.PercentOutput, DriverController.getElevator());
       masterFourbar.set(ControlMode.PercentOutput, DriverController.get4Bar());
     }
+    //dashboard.setElevatorEncoder(masterElevator.getSelectedSensorPosition());
+    //dashboard.setFourbarEncoder(masterFourbar.getSelectedSensorPosition());
+  }
+
+  public void updateDashboard() {
     dashboard.setElevatorEncoder(masterElevator.getSelectedSensorPosition());
     dashboard.setFourbarEncoder(masterFourbar.getSelectedSensorPosition());
   }

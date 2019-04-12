@@ -7,7 +7,6 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.Gyro;
 
@@ -16,7 +15,7 @@ public class Dashboard {
 
     public void loop(){
         //SmartDashboard.putNumber("voltage", RobotController.getBatteryVoltage());
-        //SmartDashboard.putNumber("gyro", gyro.getAngle());
+        SmartDashboard.putNumber("gyro", gyro.getAngle());
     }
 
     public void setElevatorEncoder(int ticks) {
@@ -28,7 +27,7 @@ public class Dashboard {
     }
 
     public void setOutput1(double value) {
-        SmartDashboard.putNumber("output1", value);
+        //SmartDashboard.putNumber("output1", value);
     }
 
     public void setManualModeOn(boolean value) {
