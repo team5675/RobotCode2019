@@ -17,7 +17,7 @@ public class Constants {
 	public static int ELEVATOR_BOTTOM_LIMIT = 75000;
 	public static int FOURBAR_TOP_LIMIT = 4600;
 	public static int FOURBAR_BOTTOM_LIMIT = 0;
-	public static int ELEVATOR_SLOW_DOWN = 120000;
+	public static int ELEVATOR_SLOW_DOWN = 180000;
 	public static int FOURBAR_SLOW_DOWN = 1000;
 	public static double ELEVATOR_P_GAIN = 0.00001;
 	public static double FOURBAR_P_GAIN = 0.0005;
