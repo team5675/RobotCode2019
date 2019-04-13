@@ -48,6 +48,10 @@ public class DriverController {
         return xbox2.getBumper(Hand.kRight); 
     }
 
+    public boolean getHam180() {
+        return xbox2.getXButton();
+    }
+
     //JEFF controls
     public double getCargoIntake() {
         return xbox2.getTriggerAxis(Hand.kLeft);

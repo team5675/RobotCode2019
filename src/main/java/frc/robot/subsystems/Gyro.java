@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.SPI.Port;
 
 public class Gyro {
     AHRS navX = new AHRS(Port.kMXP);
+    double subtractDegree = 0;
 
     public void config() {
         //navX = new AHRS(Port.kMXP);
